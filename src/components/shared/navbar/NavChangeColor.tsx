@@ -25,6 +25,7 @@ export default function NavChangeColor({ children }: { children: ReactNode }) {
         backgroundColor: activeNavBg ? "primary.light" : "transparent",
       }}
       className={`py-5 sticky top-0 duration-700 ease-in-out`}
+      zIndex={100}
     >
       {children}
     </Box>
