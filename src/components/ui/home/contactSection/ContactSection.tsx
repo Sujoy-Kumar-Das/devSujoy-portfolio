@@ -7,11 +7,11 @@ import ContactFrom from "./ContactFrom";
 import ContactSocialButtons from "./ContactSocialButtons";
 export default function ContactSection() {
   return (
-    <Box py={10}>
+    <Box py={10} sx={{ backgroundColor: "background.paper" }}>
       <Heading title="CONTACT" subtitle="Let's Work together" />
       <Stack
         component={Container}
-        direction={"row"}
+        direction={{ xs: "column", md: "row" }}
         justifyContent={"space-between"}
         alignItems={"center"}
         spacing={{ xs: 5, md: 0 }}

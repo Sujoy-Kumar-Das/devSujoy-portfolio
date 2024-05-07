@@ -1,3 +1,4 @@
+import Footer from "@/components/shared/footer/Footer";
 import Navbar from "@/components/shared/navbar/Navbar";
 import Providers from "@/lib/Providers/Providers";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
@@ -25,6 +26,7 @@ export default function RootLayout({
           <AppRouterCacheProvider>
             <Navbar />
             {children}
+            <Footer />
           </AppRouterCacheProvider>
         </body>
       </html>

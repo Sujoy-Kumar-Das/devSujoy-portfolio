@@ -19,7 +19,7 @@ export default function HeroSection() {
         justifyContent={{ xs: "center", md: "space-between" }}
         direction={{ xs: "column", md: "row" }}
         alignItems={"center"}
-        height={"80vh"}
+        height={"90vh"}
       >
         <Box
           component={motion.div}

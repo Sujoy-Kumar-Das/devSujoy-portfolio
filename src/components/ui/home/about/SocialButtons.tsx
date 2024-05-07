@@ -1,8 +1,5 @@
-"use client";
-import { GitHub } from "@mui/icons-material";
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import { Stack, Typography } from "@mui/material";
-import { FaLinkedinIn } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedinIn } from "react-icons/fa";
 export default function SocialButtons() {
   return (
     <Stack direction={"row"} spacing={2} alignItems={"center"}>
@@ -12,9 +9,10 @@ export default function SocialButtons() {
         href="https://google.com"
         color={"primary.main"}
         fontWeight={"bold"}
+        fontSize={{ xs: 25, md: 30 }}
         className=" hover:scale-125 duration-500 transition-transform ease-in-out"
       >
-        <FacebookOutlinedIcon />
+        <FaFacebook />
       </Typography>
       <Typography
         component={"a"}
@@ -22,6 +20,7 @@ export default function SocialButtons() {
         href="https://google.com"
         color={"primary.main"}
         fontWeight={"bold"}
+        fontSize={{ xs: 25, md: 30 }}
         className=" hover:scale-125 duration-500 transition-transform ease-in-out"
       >
         <FaLinkedinIn />
@@ -32,9 +31,10 @@ export default function SocialButtons() {
         href="https://google.com"
         color={"primary.main"}
         fontWeight={"bold"}
+        fontSize={{ xs: 25, md: 30 }}
         className=" hover:scale-125 duration-500 transition-transform ease-in-out"
       >
-        <GitHub />
+        <FaGithub />
       </Typography>
     </Stack>
   );
