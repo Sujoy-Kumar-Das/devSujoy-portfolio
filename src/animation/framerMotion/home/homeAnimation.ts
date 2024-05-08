@@ -6,7 +6,7 @@ export const intro = {
     transition: {
       duration: 0.2,
       staggerChildren: 0.25,
-      delayChildren: 1,
+      delayChildren: 0.5,
     },
   },
 };
@@ -17,7 +17,7 @@ export const introChildren = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, type: "spring", bounce: 0.5 },
+    transition: { duration: 0.5, type: "spring", bounce: 0.5 },
   },
 };
 

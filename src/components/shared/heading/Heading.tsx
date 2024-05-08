@@ -8,7 +8,7 @@ export default function Heading({
   subtitle: string;
 }) {
   return (
-    <Box component={"div"} mb={5}>
+    <Box component={"div"} mb={10}>
       <Typography
         component={"h1"}
         variant="h2"

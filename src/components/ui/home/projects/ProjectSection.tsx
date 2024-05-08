@@ -1,10 +1,14 @@
 import Heading from "@/components/shared/heading/Heading";
+import { TProject } from "@/types/Tproject";
 import { Box, Button, Container, Grid } from "@mui/material";
 import ProjectCard from "./ProjectCard";
-import { TProject } from "@/types/Tproject";
 
 export default async function ProjectSection() {
-  const res = await fetch("http://localhost:5000/projects");
+  const res = await fetch("https://backend-rosy-chi.vercel.app/projects", {
+    next: {
+      revalidate: 30,
+    },
+  });
   const { data: projects } = await res.json();
 
   return (

@@ -9,12 +9,23 @@ import {
   Typography,
 } from "@mui/material";
 
+type TFeature = {
+  id: string;
+  title: string;
+};
 export default async function ProjectDetailPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const res = await fetch(`http://localhost:5000/project/${params.id}`);
+  const res = await fetch(
+    `https://backend-rosy-chi.vercel.app/project/${params.id}`,
+    {
+      next: {
+        revalidate: 30,
+      },
+    }
+  );
   const { data: projectDetail } = await res.json();
   return (
     <Box py={10}>
@@ -92,7 +103,7 @@ export default async function ProjectDetailPage({
             Features
           </Typography>
           <List component={"ul"}>
-            {projectDetail.features.map((item) => (
+            {projectDetail.features.map((item: TFeature) => (
               <ListItem key={item.id} sx={{ px: 0 }}>
                 <Typography
                   sx={{
@@ -121,7 +132,7 @@ export default async function ProjectDetailPage({
             Technology
           </Typography>
           <List component={"ul"}>
-            {projectDetail.technology.map((item) => (
+            {projectDetail.technology.map((item: TFeature) => (
               <ListItem key={item.id} sx={{ px: 0 }}>
                 <Typography
                   sx={{

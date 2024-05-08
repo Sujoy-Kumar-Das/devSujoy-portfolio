@@ -7,8 +7,8 @@ export type TSocialLink = {
   link: string;
 };
 export default async function SocialButtons() {
-  const res = await fetch("http://localhost:5000/social-links", {
-    cache: "no-store",
+  const res = await fetch("https://backend-rosy-chi.vercel.app/social-links", {
+    cache: "force-cache",
   });
   const { data: socialLinks } = await res.json();
   return (

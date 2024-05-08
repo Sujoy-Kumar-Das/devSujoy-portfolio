@@ -4,8 +4,8 @@ import { FaFacebook, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 
 export default async function FooterContactInfo() {
-  const res = await fetch("http://localhost:5000/social-links", {
-    cache: "no-store",
+  const res = await fetch("https://backend-rosy-chi.vercel.app/social-links", {
+    cache: "force-cache",
   });
   const { data: socialLinks } = await res.json();
   return (
