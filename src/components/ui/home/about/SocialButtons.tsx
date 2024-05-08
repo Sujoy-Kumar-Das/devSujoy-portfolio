@@ -1,41 +1,40 @@
 import { Stack, Typography } from "@mui/material";
-import { FaFacebook, FaGithub, FaLinkedinIn } from "react-icons/fa";
-export default function SocialButtons() {
+import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+
+export type TSocialLink = {
+  _id: string;
+  title: string;
+  link: string;
+};
+export default async function SocialButtons() {
+  const res = await fetch("http://localhost:5000/social-links", {
+    cache: "no-store",
+  });
+  const { data: socialLinks } = await res.json();
   return (
     <Stack direction={"row"} spacing={2} alignItems={"center"}>
-      <Typography
-        component={"a"}
-        target="_blank"
-        href="https://google.com"
-        color={"primary.main"}
-        fontWeight={"bold"}
-        fontSize={{ xs: 25, md: 30 }}
-        className=" hover:scale-125 duration-500 transition-transform ease-in-out"
-      >
-        <FaFacebook />
-      </Typography>
-      <Typography
-        component={"a"}
-        target="_blank"
-        href="https://google.com"
-        color={"primary.main"}
-        fontWeight={"bold"}
-        fontSize={{ xs: 25, md: 30 }}
-        className=" hover:scale-125 duration-500 transition-transform ease-in-out"
-      >
-        <FaLinkedinIn />
-      </Typography>{" "}
-      <Typography
-        component={"a"}
-        target="_blank"
-        href="https://google.com"
-        color={"primary.main"}
-        fontWeight={"bold"}
-        fontSize={{ xs: 25, md: 30 }}
-        className=" hover:scale-125 duration-500 transition-transform ease-in-out"
-      >
-        <FaGithub />
-      </Typography>
+      {socialLinks.map((socialLink: TSocialLink) => (
+        <Typography
+          key={socialLink._id}
+          component={"a"}
+          target="_blank"
+          href={socialLink.link}
+          color={"primary.main"}
+          fontWeight={"bold"}
+          fontSize={{ xs: 25, md: 30 }}
+          className=" hover:scale-125 duration-500 transition-transform ease-in-out"
+        >
+          {socialLink.title === "Facebook" ? (
+            <FaFacebook />
+          ) : socialLink.title === "Linkedin" ? (
+            <FaLinkedin />
+          ) : socialLink.title === "Github" ? (
+            <FaGithub />
+          ) : (
+            ""
+          )}
+        </Typography>
+      ))}
     </Stack>
   );
 }

@@ -80,7 +80,12 @@ export default function AboutSection() {
               Hire Me
             </Button>
 
-            <Button variant="outlined" component="a" href="/" target="_blank">
+            <Button
+              variant="outlined"
+              component="a"
+              href="https://drive.google.com/uc?export=download&id=16lBfJX3BxGFqolmV3F_yfbZaQLi9o5ED"
+              target=""
+            >
               Download Resume
             </Button>
           </Stack>

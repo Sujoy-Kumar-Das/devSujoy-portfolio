@@ -1,8 +1,13 @@
+import { TSocialLink } from "@/components/ui/home/about/SocialButtons";
 import { Button, Stack, Typography } from "@mui/material";
 import { FaFacebook, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 
-export default function FooterContactInfo() {
+export default async function FooterContactInfo() {
+  const res = await fetch("http://localhost:5000/social-links", {
+    cache: "no-store",
+  });
+  const { data: socialLinks } = await res.json();
   return (
     <Stack
       direction={{ xs: "column", md: "row" }}
@@ -56,49 +61,31 @@ export default function FooterContactInfo() {
       </Stack>
 
       <Stack direction={"row"} alignItems={"center"} spacing={2}>
-        <Button
-          sx={{
-            height: { xs: 50, md: 70 },
-            width: { xs: 50, md: 70 },
-            borderRadius: "50%",
-            fontSize: { xs: "16px", md: "20px" },
-            fontWeight: "bold",
-          }}
-          component={"a"}
-          href=""
-          target="_blank"
-        >
-          <FaFacebook />
-        </Button>
-        <Button
-          sx={{
-            height: { xs: 50, md: 70 },
-            width: { xs: 50, md: 70 },
-            borderRadius: "50%",
-            fontSize: { xs: "16px", md: "20px" },
-            fontWeight: "bold",
-          }}
-          component={"a"}
-          href=""
-          target="_blank"
-        >
-          <FaLinkedin />
-        </Button>
-
-        <Button
-          sx={{
-            height: { xs: 50, md: 70 },
-            width: { xs: 50, md: 70 },
-            borderRadius: "50%",
-            fontSize: { xs: "16px", md: "20px" },
-            fontWeight: "bold",
-          }}
-          component={"a"}
-          href=""
-          target="_blank"
-        >
-          <FaGithub />
-        </Button>
+        {socialLinks.map((socialLink: TSocialLink) => (
+          <Button
+            key={socialLink._id}
+            sx={{
+              height: { xs: 50, md: 70 },
+              width: { xs: 50, md: 70 },
+              borderRadius: "50%",
+              fontSize: { xs: "16px", md: "20px" },
+              fontWeight: "bold",
+            }}
+            component={"a"}
+            href={socialLink.link}
+            target="_blank"
+          >
+            {socialLink.title === "Facebook" ? (
+              <FaFacebook />
+            ) : socialLink.title === "Linkedin" ? (
+              <FaLinkedin />
+            ) : socialLink.title === "Github" ? (
+              <FaGithub />
+            ) : (
+              ""
+            )}
+          </Button>
+        ))}
       </Stack>
     </Stack>
   );

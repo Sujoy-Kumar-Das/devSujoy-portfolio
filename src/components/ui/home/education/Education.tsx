@@ -20,13 +20,14 @@ export default function Education() {
               }}
             >
               <Typography
-                variant="h5"
                 component={"h1"}
                 color={"primary.contrastText"}
                 fontWeight={"medium"}
                 pb={1}
                 display={"flex"}
-                alignItems={"center"}
+                alignItems={{ xs: "flex-start", md: "center" }}
+                flexDirection={{ xs: "column", md: "row" }}
+                fontSize={{ xs: 12, md: 24 }}
               >
                 <span className=" me-1">
                   <FaGraduationCap />
@@ -34,8 +35,8 @@ export default function Education() {
                 <span>Diploma in Computer Technology</span>
               </Typography>
               <Typography
-                variant="body2"
                 component={"p"}
+                fontSize={{ xs: 8, md: 16 }}
                 color={"primary.contrastText"}
                 fontWeight={"medium"}
                 pb={1}
@@ -73,13 +74,14 @@ export default function Education() {
               }}
             >
               <Typography
-                variant="h5"
                 component={"h1"}
                 color={"primary.contrastText"}
                 fontWeight={"medium"}
                 pb={1}
                 display={"flex"}
-                alignItems={"center"}
+                alignItems={{ xs: "flex-start", md: "center" }}
+                flexDirection={{ xs: "column", md: "row" }}
+                fontSize={{ xs: 12, md: 24 }}
               >
                 <span className=" me-1">
                   <FaGraduationCap />
@@ -87,7 +89,7 @@ export default function Education() {
                 <span>Secondary School Certificate(S.S.C)</span>
               </Typography>
               <Typography
-                variant="body2"
+                fontSize={{ xs: 8, md: 16 }}
                 component={"p"}
                 color={"primary.contrastText"}
                 fontWeight={"medium"}

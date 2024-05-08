@@ -4,21 +4,22 @@ import {
   intro,
   introChildren,
 } from "@/animation/framerMotion/home/homeAnimation";
+import myImage from "@/assets/devImage/me.png";
 import DownloadIcon from "@mui/icons-material/Download";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import TextWriterAnimation from "./textWriter/TextWriterAnimation";
-import Image from "next/image";
-import myImage from "@/assets/devImage/me.png";
 
 export default function HeroSection() {
   return (
     <Container>
       <Stack
         justifyContent={{ xs: "center", md: "space-between" }}
-        direction={{ xs: "column", md: "row" }}
+        direction={{ xs: "column-reverse", md: "row" }}
         alignItems={"center"}
+        spacing={8}
         height={"90vh"}
       >
         <Box
@@ -59,7 +60,13 @@ export default function HeroSection() {
             <Button component={Link} href="/contact">
               Say Hello
             </Button>
-            <Button variant="outlined" sx={{ overflow: "hidden" }}>
+            <Button
+              component="a"
+              target="_blank"
+              href="https://drive.google.com/file/d/16lBfJX3BxGFqolmV3F_yfbZaQLi9o5ED/view?usp=sharing"
+              variant="outlined"
+              sx={{ overflow: "hidden" }}
+            >
               <span>Get Resume</span>
               <motion.span
                 variants={animateDownloadButtonIcon}
@@ -72,7 +79,27 @@ export default function HeroSection() {
           </motion.div>
         </Box>
         <Box>
-          <Image alt="DevSujoy image" src={myImage} height={400} width={400} />
+          <Box
+            component={motion.div}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: 1,
+              duration: 3,
+            }}
+          >
+            <Image
+              alt="DevSujoy image"
+              src={myImage}
+              height={300}
+              width={300}
+              style={{
+                borderRadius: "50%",
+                border: "4px solid #1586FD ",
+                boxShadow: "0px 0px 100px 6px rgba(0,0,21,0.58)",
+              }}
+            />
+          </Box>
         </Box>
       </Stack>
     </Container>

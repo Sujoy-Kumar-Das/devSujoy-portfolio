@@ -1,18 +1,33 @@
 import { Button, Stack } from "@mui/material";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+import { TSocialLink } from "../about/SocialButtons";
 
-export default function ContactSocialButtons() {
+export default async function ContactSocialButtons() {
+  const res = await fetch("http://localhost:5000/social-links", {
+    cache: "no-store",
+  });
+  const { data: socialLinks } = await res.json();
   return (
     <Stack direction={"row"} spacing={2} alignItems={"center"} mt={3}>
-      <Button sx={{ py: 1.5, fontSize: 16, fontWeight: "bold" }}>
-        <FaLinkedin />
-      </Button>
-      <Button sx={{ py: 1.5, fontSize: 16, fontWeight: "bold" }}>
-        <FaGithub />
-      </Button>
-      <Button sx={{ py: 1.5, fontSize: 16, fontWeight: "bold" }}>
-        <FaFacebook />
-      </Button>
+      {socialLinks.map((socialLink: TSocialLink) => (
+        <Button
+          key={socialLink._id}
+          component="a"
+          href={socialLink.link}
+          target="_blank"
+          sx={{ py: 1.5, fontSize: 16, fontWeight: "bold" }}
+        >
+          {socialLink.title === "Facebook" ? (
+            <FaFacebook />
+          ) : socialLink.title === "Linkedin" ? (
+            <FaLinkedin />
+          ) : socialLink.title === "Github" ? (
+            <FaGithub />
+          ) : (
+            ""
+          )}{" "}
+        </Button>
+      ))}
     </Stack>
   );
 }

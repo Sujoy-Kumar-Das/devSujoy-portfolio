@@ -1,6 +1,11 @@
 import Heading from "@/components/shared/heading/Heading";
 import { Box, Container, Stack, Typography } from "@mui/material";
 
+type TSkill = {
+  _id: string;
+  title: string;
+  proficiency: string;
+};
 export default async function SkillSection() {
   const res = await fetch("http://localhost:5000/skills", {
     next: {
@@ -26,7 +31,7 @@ export default async function SkillSection() {
             Frontend
           </Typography>
 
-          {skills[0].frontend?.map((frontendSkill) => (
+          {skills[0].frontend?.map((frontendSkill: TSkill) => (
             <Box key={frontendSkill.id} sx={{ cursor: "pointer" }}>
               <Stack
                 direction={"row"}
@@ -77,7 +82,7 @@ export default async function SkillSection() {
             Backend
           </Typography>
 
-          {skills[0]?.backend?.map((backendSkill) => (
+          {skills[0]?.backend?.map((backendSkill: TSkill) => (
             <Box key={backendSkill.id} sx={{ cursor: "pointer" }}>
               <Stack
                 direction={"row"}
@@ -128,7 +133,7 @@ export default async function SkillSection() {
             Software and Tools
           </Typography>
 
-          {skills[0]?.tools?.map((tool) => (
+          {skills[0]?.tools?.map((tool: TSkill) => (
             <Box key={tool.id} sx={{ cursor: "pointer" }}>
               <Stack
                 direction={"row"}

@@ -1,6 +1,7 @@
 import Heading from "@/components/shared/heading/Heading";
 import { Box, Button, Container, Grid } from "@mui/material";
 import ProjectCard from "./ProjectCard";
+import { TProject } from "@/types/Tproject";
 
 export default async function ProjectSection() {
   const res = await fetch("http://localhost:5000/projects");
@@ -15,7 +16,7 @@ export default async function ProjectSection() {
 
       <Container>
         <Grid container spacing={3}>
-          {projects.map((project) => (
+          {projects.map((project: TProject) => (
             <ProjectCard key={project._id} project={project} />
           ))}
         </Grid>

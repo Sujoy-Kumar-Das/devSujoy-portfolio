@@ -1,8 +1,10 @@
+import { TProject } from "@/types/Tproject";
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import { FaEye, FaLink } from "react-icons/fa";
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project }: { project: TProject }) {
   return (
     <Grid item xs={12} md={4} sx={{ overflow: "hidden" }}>
       <Box sx={{ position: "relative" }} className=" group">
@@ -45,7 +47,11 @@ export default function ProjectCard({ project }) {
                 >
                   <FaEye />
                 </Button>
-                <Button sx={{ fontSize: 20 }}>
+                <Button
+                  sx={{ fontSize: 20 }}
+                  component={Link}
+                  href={`/projects/${project._id}`}
+                >
                   <FaLink />
                 </Button>
               </Stack>
