@@ -19,7 +19,7 @@ export default async function ProjectSection() {
       />
 
       <Container>
-        <Grid container spacing={3}>
+        <Grid container spacing={5}>
           {projects.map((project: TProject) => (
             <ProjectCard key={project._id} project={project} />
           ))}

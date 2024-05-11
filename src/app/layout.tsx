@@ -30,7 +30,7 @@ export default function RootLayout({
           {" "}
           <AppRouterCacheProvider>
             <Navbar />
-            {children}
+            <main className=" overflow-hidden">{children}</main>
             <Footer />
           </AppRouterCacheProvider>
         </body>

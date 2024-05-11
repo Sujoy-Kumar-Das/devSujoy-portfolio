@@ -1,4 +1,3 @@
-import { animateDownloadButtonIcon } from "@/animation/framerMotion/home/homeAnimation";
 import DownloadIcon from "@mui/icons-material/Download";
 import { Button } from "@mui/material";
 import { motion } from "framer-motion";
@@ -10,6 +9,19 @@ export default function DownloadButton({
   children: ReactNode;
   link: string;
 }) {
+  // animate download button
+  const animateDownloadButtonIcon = {
+    hidden: {
+      y: 0,
+    },
+    visible: {
+      y: 30,
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+      },
+    },
+  };
   return (
     <Button
       component={"a"}

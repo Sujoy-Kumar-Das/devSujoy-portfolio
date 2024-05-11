@@ -11,7 +11,12 @@ export default function AboutMe() {
       component={Container}
       spacing={4}
     >
-      <Box position={"relative"}>
+      <Box
+        position={"relative"}
+        data-aos="fade-right"
+        data-aos-easing="linear"
+        data-aos-duration="1700"
+      >
         <Box
           sx={{
             backgroundColor: "primary.light",
@@ -40,7 +45,13 @@ export default function AboutMe() {
           borderRadius={"10px"}
         ></Box>
       </Box>
-      <Box sx={{ width: { xs: "100%", md: "50%" } }}>
+
+      <Box
+        sx={{ width: { xs: "100%", md: "50%" } }}
+        data-aos="fade-up"
+        data-aos-easing="linear"
+        data-aos-duration="1700"
+      >
         <Stack direction={"row"} alignItems={"center"} spacing={1} mb={1}>
           <Typography fontSize={{ xs: 16, md: 24 }} fontWeight={"bold"}>
             About Me

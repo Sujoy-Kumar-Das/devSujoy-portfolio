@@ -8,12 +8,7 @@ import ContactFrom from "./ContactFrom";
 import ContactSocialButtons from "./ContactSocialButtons";
 export default function ContactSection() {
   return (
-    <Box
-      py={10}
-      sx={{ backgroundColor: "background.paper" }}
-      component={"div"}
-      id="contact"
-    >
+    <Box py={10} sx={{ backgroundColor: "background.paper" }} component={"div"}>
       <Heading title="CONTACT" subtitle="Let's Work together" />
       <Stack
         component={Container}

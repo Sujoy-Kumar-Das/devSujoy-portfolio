@@ -79,16 +79,13 @@ export default function HeroSection() {
           </Button>
         </motion.div>
       </Box>
-      <Box>
-        <Box
-          component={motion.div}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            delay: 1,
-            duration: 3,
-          }}
-        >
+      <Box
+        component={motion.div}
+        variants={intro}
+        initial="hidden"
+        animate="visible"
+      >
+        <Box component={motion.div} variants={introChildren}>
           <Image
             alt="DevSujoy image"
             src={myImage}

@@ -1,11 +1,11 @@
-// home banner introduction parts animation
 export const intro = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.2,
-      staggerChildren: 0.25,
+      duration: 1,
+      ease: "easeInOut",
+      staggerChildren: 0.15,
       delayChildren: 0.5,
     },
   },
@@ -13,11 +13,15 @@ export const intro = {
 
 // home banner intro child
 export const introChildren = {
-  hidden: { opacity: 0, y: -100 },
+  hidden: { opacity: 0, y: 100 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, type: "spring", bounce: 0.5 },
+    transition: {
+      duration: 2,
+      type: "spring",
+      bounce: 0.5,
+    },
   },
 };
 

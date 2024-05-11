@@ -6,8 +6,18 @@ export default function EducationDetails() {
   return (
     <Container>
       <Heading title="Education" subtitle="My Educational Journey" />
-      <div className="w-full grid grid-cols-9">
-        <div className="col-span-4 w-full h-full ">
+      <div
+        className="w-full grid grid-cols-9"
+        data-aos="fade-up"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
+      >
+        <div
+          className="col-span-4 w-full h-full "
+          data-aos="fade-right"
+          data-aos-easing="linear"
+          data-aos-duration="1700"
+        >
           <Box
             sx={{
               height: "100%",
@@ -61,7 +71,12 @@ export default function EducationDetails() {
             2
           </div>
         </div>
-        <div className="col-span-4 w-full h-full ">
+        <div
+          className="col-span-4 w-full h-full "
+          data-aos="fade-left"
+          data-aos-easing="linear"
+          data-aos-duration="1700"
+        >
           <Box
             sx={{
               height: "100%",
