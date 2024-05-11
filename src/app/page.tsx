@@ -1,4 +1,5 @@
 import AboutSection from "@/components/ui/home/about/AboutSection";
+import BlogsSection from "@/components/ui/home/blogSection/BlogsSection";
 import ContactSection from "@/components/ui/home/contactSection/ContactSection";
 import Education from "@/components/ui/home/education/Education";
 import HeroSection from "@/components/ui/home/heroSection/HeroSection";
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Education />
       <SkillSection />
       <ProjectSection />
+      <BlogsSection />
       <ContactSection />
     </>
   );

@@ -17,6 +17,9 @@ export default function Heading({
         textTransform={"capitalize"}
         color={"body1"}
         mb={1}
+        data-aos="fade-up"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
       >
         {title}
       </Typography>
@@ -27,6 +30,9 @@ export default function Heading({
         textAlign={"center"}
         textTransform={"capitalize"}
         color={"body2"}
+        data-aos="fade-up"
+        data-aos-easing="linear"
+        data-aos-duration="1700"
       >
         {subtitle}
       </Typography>

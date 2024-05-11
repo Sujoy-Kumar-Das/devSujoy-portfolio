@@ -1,7 +1,8 @@
+import { TSkill } from "@/types/TSkills";
 import { Box, Card, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 
-export default function SkillCard({ skill }) {
+export default function SkillCard({ skill }: { skill: TSkill }) {
   return (
     <Grid
       item

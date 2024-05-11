@@ -7,16 +7,7 @@ import { FaEye, FaLink } from "react-icons/fa";
 export default function ProjectCard({ project }: { project: TProject }) {
   return (
     <Grid item xs={12} md={4} sx={{ overflow: "hidden" }}>
-      <Box
-        sx={{
-          position: "relative",
-          backgroundColor: "background.paper",
-          p: 2,
-          borderRadius: "10px",
-          boxShadow: "1px 8px 24px 0px rgba(66, 68, 90, 1)",
-        }}
-        className=" group"
-      >
+      <Box sx={{ position: "relative" }} className=" group">
         <Image
           src={project.image}
           alt=""
