@@ -1,17 +1,25 @@
-import { Box, Typography } from "@mui/material";
+import TitleHeading from "@/components/shared/heading/TitleHeading";
+import BlogCard from "@/components/ui/home/blogSection/BlogCard";
+import { Box, Container, Grid } from "@mui/material";
 
-export default function page() {
+export default async function BlogPage() {
+  const res = await fetch(`http://localhost:5000/blogs`, {
+    next: {
+      revalidate: 30,
+    },
+  });
+  const { data: blogs } = await res.json();
   return (
-    <Box
-      height={"100vh"}
-      width={"100%"}
-      display={"flex"}
-      justifyContent={"center"}
-      alignItems={"center"}
-    >
-      <Typography variant="h4" component={"h1"}>
-        Coming soon
-      </Typography>
+    <Box py={10} bgcolor={"background.default"}>
+      <Container>
+        <TitleHeading title="Blogs" />
+
+        <Grid container spacing={3}>
+          {blogs.map((blog) => (
+            <BlogCard blog={blog} key={blog._id} bgColor={true} />
+          ))}
+        </Grid>
+      </Container>
     </Box>
   );
 }

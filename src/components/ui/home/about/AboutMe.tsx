@@ -48,12 +48,16 @@ export default function AboutMe() {
 
       <Box
         sx={{ width: { xs: "100%", md: "50%" } }}
-        data-aos="fade-up"
+        data-aos="fade-up-left"
         data-aos-easing="linear"
         data-aos-duration="1700"
       >
         <Stack direction={"row"} alignItems={"center"} spacing={1} mb={1}>
-          <Typography fontSize={{ xs: 16, md: 24 }} fontWeight={"bold"}>
+          <Typography
+            fontSize={{ xs: 16, md: 24 }}
+            fontWeight={"bold"}
+            sx={{ overflow: "hidden" }}
+          >
             About Me
           </Typography>
           <Box height={"3px"} width={"10%"} bgcolor={"primary.main"}></Box>
@@ -73,13 +77,13 @@ export default function AboutMe() {
           component={"p"}
           variant="body1"
           color={"body2"}
-          textAlign={"justify"}
+          textAlign={"left"}
           my={1}
         >
-          A JavaScript Wizard Who Creates Awesome Things With React. I Love To
-          Create Dynamic User Interfaces With Tailwind CSS. I&apos;m Also
-          Buddies With Express Js, Mongo, And Mongoose For Smooth Backend Magic.
-          Let&rsquo;s Create Something Extraordinary Together. .
+          I create high-quality and user-friendly web applications with React
+          JS. Currently, I am exploring the backend with node js, Express js,and
+          MongoDB. My goal is to become a proficient MERN stack developer within
+          a year.
         </Typography>
         <SocialButtons />
 

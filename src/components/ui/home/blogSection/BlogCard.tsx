@@ -10,10 +10,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
-export default function BlogCard({ blog }) {
+export default function BlogCard({ blog, bgColor = false }) {
   return (
     <Grid item xs={12} md={4}>
-      <Box sx={{ backgroundColor: "background.default", borderRadius: "10px" }}>
+      <Box
+        bgcolor={`${bgColor ? "background.paper" : "background.default"}`}
+        sx={{ borderRadius: "10px" }}
+      >
         <Box>
           <Image
             alt=""

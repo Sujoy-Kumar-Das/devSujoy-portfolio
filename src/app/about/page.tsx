@@ -18,9 +18,7 @@ export default async function AboutPage() {
       <Box py={10}>
         <EducationDetails />
       </Box>
-      <Box py={5}>
-        <SkillProficiency skills={skills} />
-      </Box>
+      <Box py={5}>{/* <SkillProficiency skills={skills} /> */}</Box>
     </Box>
   );
 }

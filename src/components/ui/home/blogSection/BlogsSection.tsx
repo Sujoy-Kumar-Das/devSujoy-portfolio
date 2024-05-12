@@ -25,7 +25,7 @@ export default async function BlogsSection() {
           data-aos-easing="linear"
           data-aos-duration="1900"
         >
-          <Button component={Link} href="/blog">
+          <Button component={Link} href="/blogs" variant="outlined">
             Show All
           </Button>
         </Box>

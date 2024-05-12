@@ -34,7 +34,7 @@ export default function BlogSlider({ blogs }) {
     >
       {blogs.map((blog) => (
         <SwiperSlide key={blog._id}>
-          <BlogCard blog={blog} />
+          <BlogCard blog={blog} bgcolor={true} />
         </SwiperSlide>
       ))}
     </Swiper>

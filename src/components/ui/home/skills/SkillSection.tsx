@@ -1,10 +1,9 @@
 import Heading from "@/components/shared/heading/Heading";
-import { Box, Button, Container, Grid } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
 import Link from "next/link";
-import SkillCard from "./SkillCard";
-import { TSkill } from "@/types/TSkills";
+import SkillGrid from "./SkillGrid";
 export default async function SkillSection() {
-  const res = await fetch(`http://localhost:5000/skills?limit=${24}`, {
+  const res = await fetch(`http://localhost:5000/skills?limit=${18}`, {
     next: {
       revalidate: 30,
     },
@@ -17,11 +16,7 @@ export default async function SkillSection() {
           title="Skills"
           subtitle="Fluent in the Languages of Web Development"
         />
-        <Grid container spacing={5}>
-          {skills.map((skill: TSkill) => (
-            <SkillCard skill={skill} key={skill._id} />
-          ))}
-        </Grid>
+        <SkillGrid skills={skills} />
         <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
           <Button
             variant="outlined"
