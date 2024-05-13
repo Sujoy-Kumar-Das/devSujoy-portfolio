@@ -15,7 +15,7 @@ export default function AboutMe() {
         position={"relative"}
         data-aos="fade-right"
         data-aos-easing="linear"
-        data-aos-duration="1700"
+        data-aos-duration="1200"
       >
         <Box
           sx={{
@@ -50,7 +50,7 @@ export default function AboutMe() {
         sx={{ width: { xs: "100%", md: "50%" } }}
         data-aos="fade-up-left"
         data-aos-easing="linear"
-        data-aos-duration="1700"
+        data-aos-duration="1200"
       >
         <Stack direction={"row"} alignItems={"center"} spacing={1} mb={1}>
           <Typography
@@ -96,7 +96,7 @@ export default function AboutMe() {
         >
           <Button
             component="a"
-            href="/https://drive.google.com/uc?export=download&id=16lBfJX3BxGFqolmV3F_yfbZaQLi9o5ED"
+            href="https://drive.google.com/uc?export=download&id=16lBfJX3BxGFqolmV3F_yfbZaQLi9o5ED"
             target="_blank"
           >
             Hire Me

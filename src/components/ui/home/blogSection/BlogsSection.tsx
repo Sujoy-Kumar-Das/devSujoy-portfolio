@@ -4,7 +4,7 @@ import Link from "next/link";
 import BlogSlider from "./BlogSlider";
 
 export default async function BlogsSection() {
-  const res = await fetch(`http://localhost:5000/blogs?limit=6`, {
+  const res = await fetch(`https://backend-rosy-chi.vercel.app/blogs?limit=6`, {
     next: {
       revalidate: 30,
     },
@@ -23,7 +23,7 @@ export default async function BlogsSection() {
           mt={5}
           data-aos="fade-up"
           data-aos-easing="linear"
-          data-aos-duration="1900"
+          data-aos-duration="1200"
         >
           <Button component={Link} href="/blogs" variant="outlined">
             Show All

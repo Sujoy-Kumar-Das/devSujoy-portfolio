@@ -10,7 +10,7 @@ export default function SkillCard({ skill }: { skill: TSkill }) {
       md={2}
       data-aos="flip-left"
       data-aos-easing="linear"
-      data-aos-duration="1700"
+      data-aos-duration="1200"
     >
       <Card
         sx={{

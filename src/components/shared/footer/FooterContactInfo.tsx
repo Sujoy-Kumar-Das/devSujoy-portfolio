@@ -23,6 +23,11 @@ export default async function FooterContactInfo() {
             borderRadius: "50%",
             fontSize: { xs: "16px", md: "20px" },
             fontWeight: "bold",
+            transition: "color 0.5s ease, transform 0.5s ease",
+            "&:hover": {
+              color: "primary.contrastText",
+              transform: "scale(1.1)",
+            },
           }}
         >
           <FaPhoneAlt />
@@ -32,6 +37,11 @@ export default async function FooterContactInfo() {
             fontWeight: "medium",
             fontSize: { xs: "18px", md: "24px" },
             color: "body2",
+            cursor: "pointer",
+            transition: "color 0.5s ease, transform 0.5s ease",
+            "&:hover": {
+              color: "primary.contrastText",
+            },
           }}
         >
           +880 1319263016
@@ -45,6 +55,11 @@ export default async function FooterContactInfo() {
             borderRadius: "50%",
             fontSize: { xs: "16px", md: "20px" },
             fontWeight: "bold",
+            transition: "color 0.5s ease, transform 0.5s ease",
+            "&:hover": {
+              color: "primary.contrastText",
+              transform: "scale(1.1)",
+            },
           }}
         >
           <MdOutlineMail />
@@ -53,7 +68,12 @@ export default async function FooterContactInfo() {
           sx={{
             fontWeight: "medium",
             fontSize: { xs: "18px", md: "24px" },
+            cursor: "pointer",
             color: "body2",
+            transition: "color 0.5s ease, transform 0.5s ease",
+            "&:hover": {
+              color: "primary.contrastText",
+            },
           }}
         >
           sujoykumardas75@gmail.com
@@ -70,6 +90,11 @@ export default async function FooterContactInfo() {
               borderRadius: "50%",
               fontSize: { xs: "16px", md: "20px" },
               fontWeight: "bold",
+              transition: "color 0.5s ease, transform 0.5s ease",
+              "&:hover": {
+                color: "primary.contrastText",
+                transform: "scale(1.1)",
+              },
             }}
             component={"a"}
             href={socialLink.link}

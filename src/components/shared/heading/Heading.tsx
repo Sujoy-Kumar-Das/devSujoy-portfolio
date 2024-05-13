@@ -19,7 +19,7 @@ export default function Heading({
         mb={1}
         data-aos="fade-up"
         data-aos-easing="linear"
-        data-aos-duration="1500"
+        data-aos-duration="1000"
       >
         {title}
       </Typography>
@@ -32,7 +32,7 @@ export default function Heading({
         color={"body2"}
         data-aos="fade-up"
         data-aos-easing="linear"
-        data-aos-duration="1700"
+        data-aos-duration="1000"
       >
         {subtitle}
       </Typography>

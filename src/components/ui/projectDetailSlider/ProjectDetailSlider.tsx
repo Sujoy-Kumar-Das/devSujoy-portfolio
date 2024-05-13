@@ -1,4 +1,5 @@
 "use client";
+import { Box } from "@mui/material";
 import Image from "next/image";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,7 +28,25 @@ export default function ProjectDetailSlider({
           key={item.id}
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <Image alt="" src={item.link} width={800} height={100} />
+          <Box
+            sx={{
+              position: "relative",
+              width: "100%",
+              height: "50vh",
+              overflow: "hidden",
+              borderRadius: "10px",
+            }}
+          >
+            <Image
+              src={item.link}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              style={{
+                position: "absolute",
+              }}
+            />
+          </Box>
         </SwiperSlide>
       ))}
     </Swiper>

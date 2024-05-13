@@ -31,7 +31,9 @@ export default async function ProjectDetailPage({
     <Box py={10}>
       <Container>
         <Box mb={5}>
-          <ProjectDetailSlider data={projectDetail.images} />
+          <Box sx={{ width: { xs: "100%", md: "70%" }, marginX: "auto" }}>
+            <ProjectDetailSlider data={projectDetail.images} />
+          </Box>
           <Stack direction={"row"} spacing={3} mt={5}>
             <Typography
               color={"body1"}

@@ -1,7 +1,7 @@
 import Heading from "@/components/shared/heading/Heading";
-import { Box, Button, Container, Grid } from "@mui/material";
-import ProjectCard from "./ProjectCard";
-import { TProject } from "@/types/Tproject";
+import { Box, Button } from "@mui/material";
+import Link from "next/link";
+import ProjectSlider from "./ProjectSlider";
 
 export default async function ProjectSection() {
   const res = await fetch("https://backend-rosy-chi.vercel.app/projects", {
@@ -12,22 +12,27 @@ export default async function ProjectSection() {
   const { data: projects } = await res.json();
 
   return (
-    <Box py={10}>
+    <Box py={16} bgcolor={"background.default"}>
       <Heading
         title="Projects"
         subtitle="Explore My Web Development Portfolio and Projects"
       />
 
-      <Container>
-        <Grid container spacing={5}>
-          {projects.map((project: TProject) => (
-            <ProjectCard key={project._id} project={project} />
-          ))}
-        </Grid>
-        <Box display={"flex"} justifyContent={"center"} mt={5}>
-          <Button>Show All</Button>
+      <Box width={{ xs: "90%", md: "70%" }} marginX={"auto"}>
+        <ProjectSlider projects={projects} />
+        <Box
+          display={"flex"}
+          justifyContent={"center"}
+          mt={5}
+          data-aos="fade-up"
+          data-aos-easing="linear"
+          data-aos-duration="1200"
+        >
+          <Button component={Link} href="/projects" variant="outlined">
+            Show All Projects
+          </Button>
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 }

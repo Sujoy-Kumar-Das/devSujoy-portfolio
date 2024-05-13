@@ -10,7 +10,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
-export default function BlogCard({ blog, bgColor = false }) {
+export default function BlogCard({
+  blog,
+  bgColor,
+}: {
+  blog: any;
+  bgColor: boolean;
+}) {
+  console.log(blog);
   return (
     <Grid item xs={12} md={4}>
       <Box
@@ -33,10 +40,14 @@ export default function BlogCard({ blog, bgColor = false }) {
           <Typography gutterBottom variant="h5" component="div">
             {blog.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {blog.description.length > 100
-              ? `${blog.description.slice(0, 100)}...`
-              : blog.description}
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            overflow={"hidden"}
+          >
+            {blog?.shortDescription?.length > 100
+              ? `${blog?.shortDescription.slice(0, 100)}...`
+              : blog.shortDescription}
           </Typography>
         </CardContent>
         <CardActions sx={{ pb: 2 }}>
@@ -46,12 +57,11 @@ export default function BlogCard({ blog, bgColor = false }) {
             component={Link}
             href={`/blogs/${blog._id}`}
             className="group overflow-hidden text-center "
-            style={{ transition: "transform 0.3s ease-in-out" }}
           >
-            <span className="font-bold transition-transform transform translate-x-[-200px] opacity-0 group-hover:translate-x-[30px] group-hover:opacity-100">
+            <span className="font-bold transition-transform transform translate-x-[-200px] hidden opacity-0 group-hover:translate-x-[30px] group-hover:opacity-100 group-hover:inline-block duration-700 ease-in-out">
               <FaArrowRight />
             </span>
-            <span className="font-bold transition-transform transform translate-x-0 group-hover:translate-x-[200px]">
+            <span className="font-bold transition-transform transform translate-x-0 group-hover:translate-x-[200px] duration-700 ease-in-out">
               Details
             </span>
           </Button>

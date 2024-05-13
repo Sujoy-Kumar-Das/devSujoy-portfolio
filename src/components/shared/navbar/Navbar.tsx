@@ -58,7 +58,7 @@ export default function Navbar() {
         <Box component={"div"}>
           <Button
             component={"a"}
-            href="#contact"
+            href="/contact"
             sx={{ display: { xs: "none", md: "block" } }}
           >
             Hire Me

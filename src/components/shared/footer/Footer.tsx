@@ -5,7 +5,14 @@ import FooterContactInfo from "./FooterContactInfo";
 
 export default function Footer() {
   return (
-    <Box component={"footer"} py={10} sx={{ backgroundColor: "primary.light" }}>
+    <Box
+      component={"footer"}
+      py={10}
+      sx={{ backgroundColor: "primary.light" }}
+      data-aos="fade-up"
+      data-aos-easing="linear"
+      data-aos-duration="1500"
+    >
       <Container>
         <Box
           sx={{
@@ -20,6 +27,13 @@ export default function Footer() {
                   component={Link}
                   href={navItem.link}
                   color={"body1"}
+                  sx={{
+                    transition: "color 0.5s ease, transform 0.5s ease",
+                    "&:hover": {
+                      color: "primary.contrastText",
+                      transform: "scale(1.1)",
+                    },
+                  }}
                 >
                   {navItem.title}
                 </Typography>

@@ -4,9 +4,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ReactNode, useEffect } from "react";
 import { theme } from "../theme/theme";
-AOS.init();
 export default function Providers({ children }: { children: ReactNode }) {
   useEffect(() => {
+    AOS.init({ once: true });
     return () => {
       AOS.refresh();
     };

@@ -16,7 +16,9 @@ export default async function ProjectsPage() {
         <TitleHeading title="Projects" />
         <Grid container spacing={3}>
           {projects.map((project: TProject) => (
-            <ProjectCard key={project._id} project={project} />
+            <Grid item xs={12} md={4} key={project._id}>
+              <ProjectCard project={project} />
+            </Grid>
           ))}
         </Grid>
       </Container>

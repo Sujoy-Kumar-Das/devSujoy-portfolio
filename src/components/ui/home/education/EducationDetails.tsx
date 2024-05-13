@@ -10,13 +10,13 @@ export default function EducationDetails() {
         className="w-full grid grid-cols-9"
         data-aos="fade-up"
         data-aos-easing="linear"
-        data-aos-duration="1500"
+        data-aos-duration="1200"
       >
         <div
           className="col-span-4 w-full h-full "
           data-aos="fade-right"
           data-aos-easing="linear"
-          data-aos-duration="1700"
+          data-aos-duration="1200"
         >
           <Box
             sx={{
@@ -75,7 +75,7 @@ export default function EducationDetails() {
           className="col-span-4 w-full h-full "
           data-aos="fade-left"
           data-aos-easing="linear"
-          data-aos-duration="1700"
+          data-aos-duration="1200"
         >
           <Box
             sx={{
