@@ -15,7 +15,7 @@ import TextWriterAnimation from "./textWriter/TextWriterAnimation";
 
 export default function HeroSection() {
   return (
-    <Box bgcolor={"background.default"}>
+    <Box bgcolor={"background.default"} id="banner" height={"100vh"}>
       <Stack
         justifyContent={{ xs: "center", md: "space-between" }}
         direction={{ xs: "column-reverse", md: "row" }}

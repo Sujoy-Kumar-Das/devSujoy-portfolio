@@ -10,6 +10,7 @@ export default function AboutMe() {
       alignItems={"center"}
       component={Container}
       spacing={4}
+      id="about"
     >
       <Box
         position={"relative"}

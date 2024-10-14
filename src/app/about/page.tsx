@@ -1,7 +1,6 @@
 import Heading from "@/components/shared/heading/Heading";
 import AboutMe from "@/components/ui/home/about/AboutMe";
 import EducationDetails from "@/components/ui/home/education/EducationDetails";
-import SkillGrid from "@/components/ui/home/skills/SkillGrid";
 
 import { Box, Container } from "@mui/material";
 
@@ -25,7 +24,6 @@ export default async function AboutPage() {
           title="Skills"
           subtitle="Fluent in the Languages of Web Development"
         />
-        <SkillGrid skills={skills} />
       </Box>
     </Box>
   );

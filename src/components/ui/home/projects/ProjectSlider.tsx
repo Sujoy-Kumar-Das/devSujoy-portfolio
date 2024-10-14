@@ -3,6 +3,7 @@ import { TProject } from "@/types/Tproject";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProjectCard from "./ProjectCard";
+
 export default function ProjectSlider({ projects }: { projects: TProject[] }) {
   return (
     <Swiper
@@ -15,6 +16,24 @@ export default function ProjectSlider({ projects }: { projects: TProject[] }) {
       }}
       pagination={{
         clickable: true,
+      }}
+      breakpoints={{
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 15,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1440: {
+          slidesPerView: 4,
+          spaceBetween: 25,
+        },
       }}
       modules={[Autoplay]}
       style={{

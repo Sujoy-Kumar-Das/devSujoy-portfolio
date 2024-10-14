@@ -3,7 +3,6 @@ import {
   Button,
   CardActions,
   CardContent,
-  Grid,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
@@ -17,56 +16,79 @@ export default function BlogCard({
   blog: any;
   bgColor: boolean;
 }) {
-  console.log(blog);
   return (
-    <Grid item xs={12} md={4}>
+    <Box
+      bgcolor={`${bgColor ? "background.paper" : "background.default"}`}
+      sx={{
+        borderRadius: "10px",
+        overflow: "hidden",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+        transition: "transform 0.3s, box-shadow 0.3s",
+        "&:hover": {
+          transform: "translateY(-5px)",
+          boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.15)",
+        },
+      }}
+    >
+      {/* Image Wrapper */}
       <Box
-        bgcolor={`${bgColor ? "background.paper" : "background.default"}`}
-        sx={{ borderRadius: "10px" }}
+        sx={{
+          position: "relative",
+          width: "100%",
+          height: "200px", // Set a fixed height for the image
+          overflow: "hidden",
+        }}
       >
-        <Box>
-          <Image
-            alt=""
-            src={blog.image}
-            height={300}
-            width={500}
-            style={{
-              borderTopLeftRadius: "10px",
-              borderTopRightRadius: "10px",
-            }}
-          />
-        </Box>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {blog.title}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            overflow={"hidden"}
-          >
-            {blog?.shortDescription?.length > 100
-              ? `${blog?.shortDescription.slice(0, 100)}...`
-              : blog.shortDescription}
-          </Typography>
-        </CardContent>
-        <CardActions sx={{ pb: 2 }}>
-          <Button
-            variant="outlined"
-            size="small"
-            component={Link}
-            href={`/blogs/${blog._id}`}
-            className="group overflow-hidden text-center "
-          >
-            <span className="font-bold transition-transform transform translate-x-[-200px] hidden opacity-0 group-hover:translate-x-[30px] group-hover:opacity-100 group-hover:inline-block duration-700 ease-in-out">
-              <FaArrowRight />
-            </span>
-            <span className="font-bold transition-transform transform translate-x-0 group-hover:translate-x-[200px] duration-700 ease-in-out">
-              Details
-            </span>
-          </Button>
-        </CardActions>
+        <Image
+          alt={blog.title}
+          src={blog.image}
+          fill
+          style={{
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
+          }}
+          className="hover:scale-105 transition-all duration-300 ease-in-out"
+        />
       </Box>
-    </Grid>
+
+      <CardContent sx={{ py: 2, px: 1 }}>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="h1"
+          fontWeight={600}
+          color="text.primary"
+        >
+          {blog.title}
+        </Typography>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            height: "60px",
+            overflow: "hidden",
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 3,
+          }}
+        >
+          {blog?.shortDescription?.length > 100
+            ? `${blog?.shortDescription.slice(0, 100)}...`
+            : blog.shortDescription}
+        </Typography>
+      </CardContent>
+      <CardActions sx={{ pb: 2, justifyContent: "flex-end" }}>
+        <Button
+          variant="contained"
+          size="small"
+          component={Link}
+          href={`/blogs/${blog._id}`}
+          sx={{ borderRadius: "8px" }}
+          endIcon={<FaArrowRight />}
+        >
+          Read More
+        </Button>
+      </CardActions>
+    </Box>
   );
 }

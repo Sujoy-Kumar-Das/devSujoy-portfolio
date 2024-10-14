@@ -1,7 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import parse from "html-react-parser";
 
 export default async function BlogDetails({
   params,
@@ -93,7 +92,7 @@ export default async function BlogDetails({
                 {blog.title}
               </Typography>
               <Typography fontSize={"body2"} fontWeight={"light"}>
-                {ReactHtmlParser(blog.description)}
+                {blog.shortDescription}
               </Typography>
             </Box>
           </Box>

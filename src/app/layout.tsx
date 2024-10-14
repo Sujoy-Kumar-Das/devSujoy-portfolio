@@ -25,9 +25,8 @@ export default function RootLayout({
 }) {
   return (
     <Providers>
-      <html lang="en">
+      <html lang="en" style={{ scrollBehavior: "smooth" }}>
         <body className={inter.className}>
-          {" "}
           <AppRouterCacheProvider>
             <Navbar />
             <main className=" overflow-hidden">{children}</main>

@@ -1,4 +1,3 @@
-import SkillGrid from "@/components/ui/home/skills/SkillGrid";
 import { Container } from "@mui/material";
 
 export default async function SkillPage() {
@@ -9,8 +8,6 @@ export default async function SkillPage() {
   });
   const { data: skills } = await res.json();
   return (
-    <Container sx={{ py: 10 }}>
-      <SkillGrid skills={skills} />
-    </Container>
+    <Container sx={{ py: 10 }}>{/* <SkillGrid skills={skills} /> */}</Container>
   );
 }

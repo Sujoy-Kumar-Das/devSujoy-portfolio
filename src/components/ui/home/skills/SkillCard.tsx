@@ -20,8 +20,9 @@ export default function SkillCard({ skill }: { skill: TSkill }) {
           borderRadius: "10px",
           transition: "transform 0.3s, border 0.3s",
           "&:hover": {
-            border: "1px solid #1586FD",
-            transform: "scale(1.05)",
+            transform: "translateY(-10px)",
+            boxShadow: "0px 16px 32px rgba(0, 0, 0, 0.2)",
+            borderColor: "primary.main",
           },
           height: "100%",
           display: "flex",

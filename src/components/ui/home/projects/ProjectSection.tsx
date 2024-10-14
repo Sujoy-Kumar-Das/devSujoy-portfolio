@@ -12,7 +12,7 @@ export default async function ProjectSection() {
   const { data: projects } = await res.json();
 
   return (
-    <Box py={16} bgcolor={"background.default"}>
+    <Box py={16} bgcolor={"background.default"} id="projects">
       <Heading
         title="Projects"
         subtitle="Explore My Web Development Portfolio and Projects"
