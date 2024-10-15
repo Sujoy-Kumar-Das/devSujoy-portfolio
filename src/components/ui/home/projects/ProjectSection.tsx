@@ -1,38 +1,59 @@
 import Heading from "@/components/shared/heading/Heading";
-import { Box, Button } from "@mui/material";
+import projectService from "@/services/actions/projects.service";
+import { TProject } from "@/types/Tproject";
+import { Box, Button, Container, Grid } from "@mui/material";
 import Link from "next/link";
-import ProjectSlider from "./ProjectSlider";
+import ProjectCard from "./ProjectCard";
 
 export default async function ProjectSection() {
-  const res = await fetch("https://backend-rosy-chi.vercel.app/projects", {
-    next: {
-      revalidate: 30,
-    },
-  });
-  const { data: projects } = await res.json();
-
+  const projects = await projectService(6);
   return (
-    <Box py={16} bgcolor={"background.default"} id="projects">
+    <Container
+      sx={{
+        backgroundColor: "background.default",
+        py: 16,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+      id="projects"
+    >
+      {/* Heading Section */}
       <Heading
         title="Projects"
         subtitle="Explore My Web Development Portfolio and Projects"
+        sx={{
+          marginBottom: 8,
+          textAlign: "center",
+        }}
       />
 
-      <Box width={{ xs: "90%", md: "70%" }} marginX={"auto"}>
-        <ProjectSlider projects={projects} />
-        <Box
-          display={"flex"}
-          justifyContent={"center"}
-          mt={5}
-          data-aos="fade-up"
-          data-aos-easing="linear"
-          data-aos-duration="1200"
-        >
-          <Button component={Link} href="/projects" variant="outlined">
+      {/* Projects Grid */}
+      <Grid container spacing={4} justifyContent="center">
+        {projects.map((project: TProject) => (
+          <Grid key={project._id} item xs={12} sm={6} md={4}>
+            <ProjectCard project={project} />
+          </Grid>
+        ))}
+      </Grid>
+
+      {/* Show All Projects Button */}
+      {projects.length > 6 && (
+        <Box mt={6} display="flex" justifyContent="center">
+          <Button
+            component={Link}
+            href="/projects"
+            variant="outlined"
+            size="large"
+            sx={{
+              borderRadius: "30px",
+              padding: "10px 20px",
+            }}
+          >
             Show All Projects
           </Button>
         </Box>
-      </Box>
-    </Box>
+      )}
+    </Container>
   );
 }
