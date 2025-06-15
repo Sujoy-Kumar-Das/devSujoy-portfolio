@@ -22,10 +22,6 @@ export default async function ProjectSection() {
       <Heading
         title="Projects"
         subtitle="Explore My Web Development Portfolio and Projects"
-        sx={{
-          marginBottom: 8,
-          textAlign: "center",
-        }}
       />
 
       {/* Projects Grid */}

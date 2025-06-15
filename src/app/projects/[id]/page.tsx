@@ -1,13 +1,16 @@
-import ProjectDetailSlider from "@/components/ui/projectDetailSlider/ProjectDetailSlider";
+import projectDetailsService from "@/services/actions/projectDetails.service";
 import {
   Box,
   Container,
+  Divider,
+  Link,
   List,
   ListItem,
   ListItemText,
   Stack,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
 
 type TFeature = {
   id: string;
@@ -18,134 +21,160 @@ export default async function ProjectDetailPage({
 }: {
   params: { id: string };
 }) {
-  const res = await fetch(
-    `https://backend-rosy-chi.vercel.app/project/${params.id}`,
-    {
-      next: {
-        revalidate: 30,
-      },
-    }
-  );
-  const { data: projectDetail } = await res.json();
+  const projectDetail = await projectDetailsService(params.id);
+
   return (
-    <Box py={10}>
+    <Box py={3}>
       <Container>
-        <Box mb={5}>
-          <Box sx={{ width: { xs: "100%", md: "70%" }, marginX: "auto" }}>
-            <ProjectDetailSlider data={projectDetail.images} />
+        <Box mb={6}>
+          {/* Project Slider */}
+          <Box
+            sx={{
+              position: "relative",
+              width: { xs: "100%", md: "80%" },
+              margin: "auto",
+              height: 450,
+              borderRadius: 2,
+              overflow: "hidden",
+              backgroundColor: "background.paper",
+            }}
+          >
+            <Image
+              alt={`Project Image`}
+              src={projectDetail.image}
+              fill
+              style={{ objectFit: "fill", borderRadius: "12px" }}
+            />
           </Box>
-          <Stack direction={"row"} spacing={3} mt={5}>
-            <Typography
-              color={"body1"}
-              fontWeight={"bold"}
-              fontSize={{ xs: 16, md: 24 }}
-            >
-              Source Code{" "}
+          {/* Source Code Links */}
+          <Stack
+            direction={"row"}
+            spacing={2}
+            mt={4}
+            sx={{ justifyContent: { xs: "center", md: "flex-start" } }}
+          >
+            <Typography fontWeight="bold" fontSize={{ xs: 16, md: 20 }}>
+              Source Code:
             </Typography>
-            <Typography
-              component={"a"}
-              href={projectDetail.code.frontend}
+
+            <Link
+              href={projectDetail?.code?.frontend}
               target="_blank"
-              color={"primary.main"}
-              fontWeight={"bold"}
-              fontSize={{ xs: 16, md: 24 }}
+              underline="none"
+              color="primary"
+              sx={{ fontSize: { xs: 14, md: 18 }, fontWeight: "500" }}
             >
-              {" "}
-              Client{" "}
-            </Typography>
-            <Typography
-              component={"a"}
-              href={projectDetail.code.backend}
+              Client
+            </Link>
+            <Link
+              href={projectDetail?.code?.backend}
               target="_blank"
-              color={"primary.main"}
-              fontWeight={"bold"}
-              fontSize={{ xs: 16, md: 24 }}
+              underline="none"
+              color="primary"
+              sx={{ fontSize: { xs: 14, md: 18 }, fontWeight: "500" }}
             >
-              {" "}
-              Server{" "}
-            </Typography>
-            <Typography
-              component={"a"}
-              href={projectDetail.live}
+              Server
+            </Link>
+            <Link
+              href={projectDetail?.live}
               target="_blank"
-              color={"primary.main"}
-              fontWeight={"bold"}
-              fontSize={{ xs: 16, md: 24 }}
+              underline="none"
+              color="primary"
+              sx={{ fontSize: { xs: 14, md: 18 }, fontWeight: "500" }}
             >
-              {" "}
-              Live{" "}
-            </Typography>
+              Live
+            </Link>
           </Stack>
         </Box>
-        {/* description */}
-        <Box>
+
+        <Divider sx={{ my: 4 }} />
+
+        {/* Description Section */}
+        <Box mb={4}>
           <Typography
-            component={"p"}
-            color={"body1"}
-            fontWeight={"bold"}
-            fontSize={{ xs: 16, md: 24 }}
+            variant="h6"
+            fontWeight="bold"
             mb={2}
+            fontSize={{ xs: 18, md: 22 }}
           >
             Description
           </Typography>
-          <Typography component={"p"} color={"body1"} variant="body1">
-            {projectDetail.description}
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            fontSize={{ xs: 14, md: 16 }}
+          >
+            {projectDetail?.description}
           </Typography>
         </Box>
 
-        {/* features */}
-        <Box sx={{ my: 5 }}>
+        <Divider sx={{ my: 4 }} />
+
+        {/* Features Section */}
+        <Box mb={4}>
           <Typography
-            component={"p"}
-            color={"body1"}
-            fontWeight={"bold"}
-            fontSize={{ xs: 16, md: 24 }}
+            variant="h6"
+            fontWeight="bold"
             mb={2}
+            fontSize={{ xs: 18, md: 22 }}
           >
             Features
           </Typography>
-          <List component={"ul"}>
-            {projectDetail.features.map((item: TFeature) => (
-              <ListItem key={item.id} sx={{ px: 0 }}>
-                <Typography
+          <List>
+            {projectDetail?.features?.map((item: TFeature) => (
+              <ListItem key={item.id} sx={{ pl: 0 }}>
+                <Box
                   sx={{
-                    width: "8px",
-                    height: "8px",
-                    backgroundColor: "black",
+                    width: 6,
+                    height: 6,
+                    bgcolor: "primary.main",
                     borderRadius: "50%",
-                    marginRight: 2,
+                    mr: 2,
                   }}
-                ></Typography>
-                <ListItemText primary={item.title} />
+                />
+                <ListItemText
+                  primary={item.title}
+                  primaryTypographyProps={{
+                    fontSize: { xs: 14, md: 16 },
+                    color: "text.secondary",
+                  }}
+                />
               </ListItem>
             ))}
           </List>
         </Box>
 
-        {/* technology */}
-        <Box sx={{ my: 5 }}>
+        <Divider sx={{ my: 4 }} />
+
+        {/* Technology Section */}
+        <Box>
           <Typography
-            component={"p"}
-            color={"body1"}
-            fontWeight={"bold"}
-            fontSize={{ xs: 16, md: 24 }}
+            variant="h6"
+            fontWeight="bold"
             mb={2}
+            fontSize={{ xs: 18, md: 22 }}
           >
             Technology
           </Typography>
-          <List component={"ul"}>
-            {projectDetail.technology.map((item: TFeature) => (
-              <ListItem key={item.id} sx={{ px: 0 }}>
-                <Typography
+          <List>
+            {projectDetail?.technology?.map((item: TFeature) => (
+              <ListItem key={item.id} sx={{ pl: 0 }}>
+                <Box
                   sx={{
-                    width: "8px",
-                    height: "8px",
-                    backgroundColor: "black",
+                    width: 6,
+                    height: 6,
+                    bgcolor: "primary.main",
                     borderRadius: "50%",
-                    marginRight: 2,
+                    mr: 2,
                   }}
-                ></Typography>
-                <ListItemText primary={item.title} />
+                />
+                <ListItemText
+                  primary={item.title}
+                  primaryTypographyProps={{
+                    fontSize: { xs: 14, md: 16 },
+                    color: "text.secondary",
+                  }}
+                />
               </ListItem>
             ))}
           </List>

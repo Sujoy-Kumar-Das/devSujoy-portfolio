@@ -3,23 +3,22 @@ export const intro = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 1,
-      ease: "easeInOut",
+      duration: 0.5,
+      ease: "easeInOut" as const, // Explicit type
       staggerChildren: 0.15,
       delayChildren: 0.5,
     },
   },
 };
 
-// home banner intro child
 export const introChildren = {
   hidden: { opacity: 0, y: 100 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 2,
-      type: "spring",
+      duration: 1,
+      type: "spring" as const,
       bounce: 0.5,
     },
   },

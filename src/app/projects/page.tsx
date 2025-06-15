@@ -1,15 +1,11 @@
 import TitleHeading from "@/components/shared/heading/TitleHeading";
 import ProjectCard from "@/components/ui/home/projects/ProjectCard";
+import projectService from "@/services/actions/projects.service";
 import { TProject } from "@/types/Tproject";
 import { Box, Container, Grid } from "@mui/material";
 
 export default async function ProjectsPage() {
-  const res = await fetch("https://backend-rosy-chi.vercel.app/projects", {
-    next: {
-      revalidate: 30,
-    },
-  });
-  const { data: projects } = await res.json();
+  const projects = await projectService();
   return (
     <Box bgcolor={"background.main"} py={10}>
       <Container>

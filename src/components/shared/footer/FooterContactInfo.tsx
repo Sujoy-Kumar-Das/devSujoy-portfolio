@@ -1,31 +1,29 @@
-import { TSocialLink } from "@/components/ui/home/about/SocialButtons";
+import socialLinks from "@/staticData/socialLinks";
 import { Button, Stack, Typography } from "@mui/material";
-import { FaFacebook, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 
-export default async function FooterContactInfo() {
-  const res = await fetch("https://backend-rosy-chi.vercel.app/social-links", {
-    cache: "force-cache",
-  });
-  const { data: socialLinks } = await res.json();
+export default function FooterContactInfo() {
   return (
     <Stack
       direction={{ xs: "column", md: "row" }}
       justifyContent={{ xs: "center", md: "space-between" }}
       alignItems={"center"}
-      spacing={{ xs: 3, md: 2 }}
+      spacing={{ xs: 3, md: 4 }}
     >
+      {/* Phone Section */}
       <Stack direction={"row"} alignItems={"center"} spacing={2}>
         <Button
           sx={{
-            height: { xs: 50, md: 70 },
-            width: { xs: 50, md: 70 },
+            height: { xs: 50, md: 60 },
+            width: { xs: 50, md: 60 },
             borderRadius: "50%",
-            fontSize: { xs: "16px", md: "20px" },
-            fontWeight: "bold",
-            transition: "color 0.5s ease, transform 0.5s ease",
+            fontSize: { xs: "18px", md: "22px" },
+            backgroundColor: "primary.main",
+            color: "white",
+            transition: "background-color 0.3s ease, transform 0.3s ease",
             "&:hover": {
-              color: "primary.contrastText",
+              backgroundColor: "primary.dark",
               transform: "scale(1.1)",
             },
           }}
@@ -34,30 +32,33 @@ export default async function FooterContactInfo() {
         </Button>
         <Typography
           sx={{
-            fontWeight: "medium",
-            fontSize: { xs: "18px", md: "24px" },
-            color: "body2",
+            fontWeight: "500",
+            fontSize: { xs: "18px", md: "22px" },
+            color: "text.primary",
             cursor: "pointer",
-            transition: "color 0.5s ease, transform 0.5s ease",
+            transition: "color 0.3s ease, transform 0.3s ease",
             "&:hover": {
-              color: "primary.contrastText",
+              color: "#ffff",
             },
           }}
         >
           +880 1319263016
         </Typography>
       </Stack>
+
+      {/* Email Section */}
       <Stack direction={"row"} alignItems={"center"} spacing={2}>
         <Button
           sx={{
-            height: { xs: 50, md: 70 },
-            width: { xs: 50, md: 70 },
+            height: { xs: 50, md: 60 },
+            width: { xs: 50, md: 60 },
             borderRadius: "50%",
-            fontSize: { xs: "16px", md: "20px" },
-            fontWeight: "bold",
-            transition: "color 0.5s ease, transform 0.5s ease",
+            fontSize: { xs: "18px", md: "22px" },
+            backgroundColor: "primary.main",
+            color: "white",
+            transition: "background-color 0.3s ease, transform 0.3s ease",
             "&:hover": {
-              color: "primary.contrastText",
+              backgroundColor: "primary.dark",
               transform: "scale(1.1)",
             },
           }}
@@ -66,13 +67,13 @@ export default async function FooterContactInfo() {
         </Button>
         <Typography
           sx={{
-            fontWeight: "medium",
-            fontSize: { xs: "18px", md: "24px" },
+            fontWeight: "500",
+            fontSize: { xs: "18px", md: "22px" },
+            color: "text.primary",
             cursor: "pointer",
-            color: "body2",
-            transition: "color 0.5s ease, transform 0.5s ease",
+            transition: "color 0.3s ease, transform 0.3s ease",
             "&:hover": {
-              color: "primary.contrastText",
+              color: "#ffff",
             },
           }}
         >
@@ -80,19 +81,21 @@ export default async function FooterContactInfo() {
         </Typography>
       </Stack>
 
+      {/* Social Links Section */}
       <Stack direction={"row"} alignItems={"center"} spacing={2}>
-        {socialLinks.map((socialLink: TSocialLink) => (
+        {socialLinks.map((socialLink) => (
           <Button
-            key={socialLink._id}
+            key={socialLink.id}
             sx={{
-              height: { xs: 50, md: 70 },
-              width: { xs: 50, md: 70 },
+              height: { xs: 50, md: 60 },
+              width: { xs: 50, md: 60 },
               borderRadius: "50%",
-              fontSize: { xs: "16px", md: "20px" },
-              fontWeight: "bold",
-              transition: "color 0.5s ease, transform 0.5s ease",
+              fontSize: { xs: "18px", md: "22px" },
+              backgroundColor: "primary.main",
+              color: "white",
+              transition: "background-color 0.3s ease, transform 0.3s ease",
               "&:hover": {
-                color: "primary.contrastText",
+                backgroundColor: "primary.dark",
                 transform: "scale(1.1)",
               },
             }}
@@ -100,15 +103,7 @@ export default async function FooterContactInfo() {
             href={socialLink.link}
             target="_blank"
           >
-            {socialLink.title === "Facebook" ? (
-              <FaFacebook />
-            ) : socialLink.title === "Linkedin" ? (
-              <FaLinkedin />
-            ) : socialLink.title === "Github" ? (
-              <FaGithub />
-            ) : (
-              ""
-            )}
+            {socialLink.icon}
           </Button>
         ))}
       </Stack>

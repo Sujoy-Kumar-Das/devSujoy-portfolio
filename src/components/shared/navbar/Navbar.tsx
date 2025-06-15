@@ -1,8 +1,9 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import NavChangeColor from "./NavChangeColor";
-import NavMenuButton from "./NavMenuButton";
 import { navItems } from "./navItems";
+import NavLink from "./NavLink";
+import NavMenuButton from "./NavMenuButton";
 
 export default function Navbar() {
   return (
@@ -18,8 +19,11 @@ export default function Navbar() {
           href={"/"}
           variant="h5"
           fontWeight={"bold"}
-          color={" body1"}
-          className=" cursor-pointer"
+          color={"primary.main"}
+          sx={{
+            cursor: "pointer",
+            textDecoration: "none",
+          }}
         >
           DevSujoy
         </Typography>
@@ -32,34 +36,17 @@ export default function Navbar() {
           spacing={5}
         >
           {navItems.map((navItem) => (
-            <Box
-              component={"div"}
-              key={navItem.id}
-              sx={{ position: "relative" }}
-              className="group"
-            >
-              <Typography
-                component={Link}
-                href={navItem.link}
-                color={"body1"}
-                fontWeight={"medium"}
-              >
-                {navItem.title}
-              </Typography>
-              <Box
-                component={"div"}
-                sx={{ backgroundColor: "primary.main" }}
-                className="absolute bottom-0 left-0 right-0 h-[2px]  transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"
-              ></Box>
-            </Box>
+            <NavLink navItem={navItem} key={navItem.id} />
           ))}
         </Stack>
 
         <Box component={"div"}>
           <Button
             component={"a"}
-            href="/contact"
-            sx={{ display: { xs: "none", md: "block" } }}
+            href="#contact"
+            sx={{
+              display: { xs: "none", md: "block" },
+            }}
           >
             Hire Me
           </Button>

@@ -23,12 +23,12 @@ export default function NavChangeColor({ children }: { children: ReactNode }) {
     <Box
       component={motion.div}
       sx={{
-        backgroundColor: activeNavBg ? "primary.light" : "transparent",
+        backgroundColor: activeNavBg ? "background.paper" : "transparent",
+        py: 4,
       }}
-      className={`py-5 sticky top-0 duration-700 ease-in-out`}
       zIndex={100}
       initial={{
-        translateY: "-200px",
+        translateY: "-100vh",
         opacity: 0,
       }}
       animate={{
@@ -37,6 +37,7 @@ export default function NavChangeColor({ children }: { children: ReactNode }) {
       }}
       transition={{
         duration: 0.5,
+        type: "spring",
       }}
     >
       {children}

@@ -1,8 +1,8 @@
 export const navItems = [
-  { id: 1, title: "Home", link: "#banner" },
-  { id: 2, title: "About", link: "#about" },
-  { id: 3, title: "Skill", link: "#skills" },
-  { id: 4, title: "Project", link: "#projects" },
-  { id: 6, title: "Blog", link: "#blogs" },
-  { id: 5, title: "Contact", link: "#contact" },
+  { id: crypto.randomUUID(), title: "Home", link: "#banner" },
+  { id: crypto.randomUUID(), title: "About", link: "#about" },
+  { id: crypto.randomUUID(), title: "Skill", link: "#skills" },
+  { id: crypto.randomUUID(), title: "Project", link: "#projects" },
+  { id: crypto.randomUUID(), title: "Blog", link: "#blogs" },
+  { id: crypto.randomUUID(), title: "Contact", link: "#contact" },
 ];
