@@ -1,94 +1,103 @@
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Box,
-  Button,
-  CardActions,
+  Card,
   CardContent,
+  CardMedia,
+  Link,
   Typography,
 } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
 
-export default function BlogCard({
-  blog,
-  bgColor,
-}: {
-  blog: any;
-  bgColor: boolean;
-}) {
+export default function BlogCard({ blog }: { blog: any }) {
   return (
-    <Box
-      bgcolor={`${bgColor ? "background.paper" : "background.default"}`}
+    <Card
       sx={{
-        borderRadius: "10px",
+        bgcolor: "background.paper",
+        color: "text.primary",
+        borderRadius: 3,
         overflow: "hidden",
-        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-        transition: "transform 0.3s, box-shadow 0.3s",
+        boxShadow: 3,
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
         "&:hover": {
-          transform: "translateY(-5px)",
-          boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.15)",
+          transform: "translateY(-6px)",
+          boxShadow: 16,
         },
       }}
     >
-      {/* Image Wrapper */}
-      <Box
-        sx={{
-          position: "relative",
-          width: "100%",
-          height: "200px", // Set a fixed height for the image
-          overflow: "hidden",
-        }}
-      >
-        <Image
-          alt={blog.title}
-          src={blog.image}
-          fill
-          style={{
-            borderTopLeftRadius: "10px",
-            borderTopRightRadius: "10px",
+      {/* Image Section */}
+      <Box sx={{ position: "relative", height: 200, overflow: "hidden" }}>
+        <CardMedia
+          component="img"
+          image={blog.image}
+          alt="Blog Post 1"
+          sx={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            bgcolor: "indigo.900",
+            opacity: 0.9,
           }}
-          className="hover:scale-105 transition-all duration-300 ease-in-out"
         />
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            bgcolor: "primary.main",
+            color: "text.primary",
+            px: 1.5,
+            py: 0.5,
+            fontSize: "0.875rem",
+          }}
+        >
+          {blog?.category || "Development"}
+        </Box>
       </Box>
 
-      <CardContent sx={{ py: 2, px: 1 }}>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="h1"
-          fontWeight={600}
-          color="text.primary"
-        >
-          {blog.title}
+      {/* Content */}
+      <CardContent>
+        <Typography mb={1} color="text.secondary">
+          <span>June 15, 2023</span>
         </Typography>
+
         <Typography
-          variant="body2"
-          color="text.secondary"
+          variant="h6"
+          gutterBottom
           sx={{
-            height: "60px",
-            overflow: "hidden",
-            display: "-webkit-box",
-            WebkitBoxOrient: "vertical",
-            WebkitLineClamp: 3,
+            "&:hover": {
+              cursor: "pointer",
+            },
           }}
         >
-          {blog?.shortDescription?.length > 100
-            ? `${blog?.shortDescription.slice(0, 100)}...`
-            : blog.shortDescription}
+          <Link
+            href={`/blogs/${blog._id}`}
+            underline="none"
+            color="text.primary"
+            fontWeight={"bold"}
+          >
+            {blog.title}
+          </Link>
         </Typography>
-      </CardContent>
-      <CardActions sx={{ pb: 2, justifyContent: "flex-end" }}>
-        <Button
-          variant="contained"
-          size="small"
-          component={Link}
+
+        <Typography variant="body2" color="text.secondary" mb={2}>
+          {blog.description.length > 200
+            ? `${blog.description.slice(0, 200)}...`
+            : blog.description}
+        </Typography>
+
+        <Link
           href={`/blogs/${blog._id}`}
-          sx={{ borderRadius: "8px" }}
-          endIcon={<FaArrowRight />}
+          underline="none"
+          color="primary.primary"
+          sx={{
+            display: "inline-flex",
+            alignItems: "center",
+            fontWeight: 500,
+          }}
         >
-          Read More
-        </Button>
-      </CardActions>
-    </Box>
+          Read More <ArrowForwardIcon fontSize="small" sx={{ ml: 0.5 }} />
+        </Link>
+      </CardContent>
+    </Card>
   );
 }

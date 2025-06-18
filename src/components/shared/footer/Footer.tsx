@@ -8,10 +8,7 @@ export default function Footer() {
     <Box
       component={"footer"}
       py={10}
-      sx={{ backgroundColor: "primary.light", color: "white" }}
-      data-aos="fade-up"
-      data-aos-easing="linear"
-      data-aos-duration="1500"
+      sx={{ backgroundColor: "background.paper", color: "text.primary" }}
     >
       <Container>
         {/* Navigation Links */}
@@ -35,11 +32,12 @@ export default function Footer() {
                   href={navItem.link}
                   variant="h6"
                   sx={{
-                    color: "white",
+                    color: "text.primary",
+                    textDecoration: "none",
                     position: "relative",
                     transition: "color 0.3s ease",
                     "&:hover": {
-                      color: "primary.contrastText",
+                      color: "text.secondary",
                     },
                     "&:before": {
                       content: '""',
@@ -47,8 +45,8 @@ export default function Footer() {
                       left: "0",
                       right: "0",
                       bottom: "0",
+                      backgroundColor: "text.secondary",
                       height: "2px",
-                      backgroundColor: "primary.contrastText",
                       transform: "scaleX(0)",
                       transition: "transform 0.3s ease-in-out",
                     },
@@ -62,7 +60,7 @@ export default function Footer() {
                 {index !== navItems.length - 1 && (
                   <Typography
                     component={"span"}
-                    color={"white"}
+                    color={"text.primary"}
                     fontWeight="bold"
                   >
                     |
@@ -75,7 +73,6 @@ export default function Footer() {
 
         <Divider
           sx={{
-            backgroundColor: "rgba(255, 255, 255, 0.3)",
             my: 3,
           }}
         />

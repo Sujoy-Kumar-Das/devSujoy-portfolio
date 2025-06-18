@@ -4,7 +4,7 @@ import RightHeroSection from "./RightHeroSection";
 
 export default function HeroSection() {
   return (
-    <Box id="banner" bgcolor={"background.default"}>
+    <Box bgcolor={"background.default"}>
       <Stack
         justifyContent={{ xs: "center", md: "space-between" }}
         direction={{ xs: "column-reverse", md: "row" }}
@@ -13,7 +13,7 @@ export default function HeroSection() {
         height={"90vh"}
         component={Container}
       >
-        {/* <LeftHeroSection /> */}
+        <LeftHeroSection />
         <RightHeroSection />
       </Stack>
     </Box>

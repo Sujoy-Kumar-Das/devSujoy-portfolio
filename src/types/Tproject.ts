@@ -3,4 +3,6 @@ export type TProject = {
   title: string;
   live: string;
   image: string;
+  description: string;
+  technologies: string[];
 };

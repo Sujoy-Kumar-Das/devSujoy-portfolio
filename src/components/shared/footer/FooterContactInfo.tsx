@@ -23,7 +23,7 @@ export default function FooterContactInfo() {
             color: "white",
             transition: "background-color 0.3s ease, transform 0.3s ease",
             "&:hover": {
-              backgroundColor: "primary.dark",
+              backgroundColor: "primary.light",
               transform: "scale(1.1)",
             },
           }}
@@ -38,7 +38,7 @@ export default function FooterContactInfo() {
             cursor: "pointer",
             transition: "color 0.3s ease, transform 0.3s ease",
             "&:hover": {
-              color: "#ffff",
+              color: "text.secondary",
             },
           }}
         >
@@ -58,7 +58,7 @@ export default function FooterContactInfo() {
             color: "white",
             transition: "background-color 0.3s ease, transform 0.3s ease",
             "&:hover": {
-              backgroundColor: "primary.dark",
+              backgroundColor: "primary.light",
               transform: "scale(1.1)",
             },
           }}
@@ -73,7 +73,7 @@ export default function FooterContactInfo() {
             cursor: "pointer",
             transition: "color 0.3s ease, transform 0.3s ease",
             "&:hover": {
-              color: "#ffff",
+              color: "text.secondary",
             },
           }}
         >

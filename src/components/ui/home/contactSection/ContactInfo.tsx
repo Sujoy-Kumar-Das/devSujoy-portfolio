@@ -86,12 +86,8 @@ export default function ContactInfo() {
 
         <ContactSocialButtons />
       </Box>
-      <Box
-        sx={{ width: { xs: "100%", md: "50%" } }}
-        data-aos="fade-left"
-        data-aos-easing="linear"
-        data-aos-duration="1200"
-      >
+
+      <Box sx={{ width: { xs: "100%", md: "50%" } }}>
         <ContactFrom />
       </Box>
     </Stack>

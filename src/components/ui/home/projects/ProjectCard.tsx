@@ -1,93 +1,136 @@
 import { TProject } from "@/types/Tproject";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Stack,
+  Typography,
+} from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { FaEye, FaLink } from "react-icons/fa";
-
-export default function ProjectCard({ project }: { project: TProject }) {
+export default function ProjectCardMUI({ project }: { project: TProject }) {
   return (
-    <Box
+    <Card
       sx={{
-        borderRadius: "15px",
-        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+        bgcolor: "background.paper",
+        borderRadius: 4,
         overflow: "hidden",
-        backgroundColor: "#fff",
+        boxShadow: 8,
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
         transition: "transform 0.3s ease, box-shadow 0.3s ease",
         "&:hover": {
-          transform: "scale(1.05)",
-          boxShadow: "0 8px 25px rgba(0, 0, 0, 0.2)",
+          transform: "translateY(-6px)",
+          boxShadow: 16,
         },
       }}
     >
-      {/* Image Wrapper */}
+      {/* Image Section */}
       <Box
         sx={{
+          height: 240,
           position: "relative",
-          width: "100%",
-          height: "200px",
           overflow: "hidden",
         }}
       >
         <Image
-          alt={project.title}
           src={project.image}
+          alt="project image"
           fill
-          style={{
-            borderTopLeftRadius: "10px",
-            borderTopRightRadius: "10px",
-          }}
-          className="hover:scale-105 transition-all duration-300 ease-in-out"
+          style={{ objectFit: "contain" }}
+          sizes="(max-width: 600px) 100vw, 600px"
+          priority
         />
-      </Box>
-
-      {/* Project Info */}
-      <Box sx={{ padding: "20px" }}>
-        {/* Project Title */}
-        <Typography
-          variant="h6"
-          fontWeight="700"
+        {/* Overlay with Button */}
+        <Box
           sx={{
-            marginBottom: "10px",
-            color: "#222",
-            fontSize: "1.25rem",
+            position: "absolute",
+            inset: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.3)",
+            backdropFilter: "blur(1px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            opacity: 0,
+            transition: "opacity 0.3s ease",
+            "&:hover": {
+              opacity: 1,
+            },
           }}
         >
-          {project.title}
-        </Typography>
-
-        {/* Buttons */}
-        <Stack direction="row" spacing={2}>
           <Button
+            component={Link}
             variant="contained"
-            color="primary"
-            sx={{
-              fontSize: "14px",
-              padding: "8px 16px",
-              borderRadius: "30px",
-            }}
+            href={`/projects/${project._id}`}
+          >
+            View Details
+          </Button>
+        </Box>
+      </Box>
+
+      {/* Text Content */}
+      <CardContent sx={{ p: 3 }}>
+        <Stack direction="row" alignItems="center" gap={1}>
+          <Typography variant="h6" fontWeight={600} color="text.primary" noWrap>
+            {project.title}
+          </Typography>
+
+          <Box
+            component={Link}
             href={project.live}
             target="_blank"
-            startIcon={<FaEye />}
-          >
-            Live Demo
-          </Button>
-
-          <Button
-            variant="outlined"
-            color="primary"
+            rel="noopener noreferrer"
             sx={{
-              fontSize: "14px",
-              padding: "8px 16px",
-              borderRadius: "30px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              bgcolor: "text.primary",
+              color: "background.paper",
+              borderRadius: "50%",
+              width: 34,
+              height: 34,
             }}
-            component={Link}
-            href={`/projects/${project._id}`}
-            startIcon={<FaLink />}
           >
-            Details
-          </Button>
+            <ArrowOutwardIcon fontSize="small" />
+          </Box>
         </Stack>
-      </Box>
-    </Box>
+
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          mb={2}
+          sx={{ lineHeight: 1.6 }}
+        >
+          {project.description ||
+            "A customizable portfolio template for creatives and developers."}
+        </Typography>
+
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+          {(
+            project?.technologies?.slice(0, 3) || [
+              "HTML5",
+              "CSS3",
+              "JavaScript",
+            ]
+          ).map((tech) => (
+            <Chip
+              key={tech}
+              label={tech}
+              size="small"
+              sx={{
+                bgcolor: "background.default",
+                color: "text.secondary",
+                fontWeight: 500,
+                fontSize: "0.75rem",
+              }}
+            />
+          ))}
+        </Box>
+      </CardContent>
+    </Card>
   );
 }

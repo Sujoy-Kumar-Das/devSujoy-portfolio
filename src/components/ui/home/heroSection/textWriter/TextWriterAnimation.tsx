@@ -6,7 +6,7 @@ const TextWriterAnimation = () => {
     <Typography
       component={"span"}
       variant="h5"
-      sx={{ color: "primary.main" }}
+      sx={{ color: "primary.light" }}
       fontWeight={"medium"}
     >
       <Typewriter

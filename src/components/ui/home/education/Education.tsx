@@ -1,132 +1,215 @@
+"use client";
+import {
+  inViewContainerVariants,
+  inViewItemVariants,
+} from "@/animation/framerMotion/inview-animation";
 import Heading from "@/components/shared/heading/Heading";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 import { FaGraduationCap } from "react-icons/fa";
 
 export default function Education() {
   return (
-    <Box py={16} bgcolor={"background.default"}>
+    <Box py={16} bgcolor="background.default">
       <Container>
         <Heading title="Education" subtitle="My Educational Journey" />
-        <div
-          className="grid grid-cols-9"
-          data-aos="fade-up"
-          data-aos-easing="linear"
-          data-aos-duration="1200"
+
+        <Grid
+          container
+          spacing={2}
+          alignItems="stretch"
+          component={motion.div}
+          variants={inViewContainerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
         >
-          {/* Stack 1 */}
-          <div
-            className="col-span-4 w-full h-full"
-            data-aos="fade-right"
-            data-aos-easing="linear"
-            data-aos-duration="1200"
+          {/* Stack 1 - Left Box */}
+          <Grid
+            item
+            xs={12}
+            md={5}
+            component={motion.div}
+            variants={inViewItemVariants}
           >
             <Box
               sx={{
                 height: "100%",
-                width: "100%",
                 backgroundColor: "primary.main",
                 py: 2,
                 px: 3,
                 borderRadius: "6px",
-                boxShadow: 2, // Add some shadow for depth
-                transition: "transform 0.3s", // Smooth transition on hover
+                boxShadow: 2,
+                transition: "transform 0.3s",
                 "&:hover": {
-                  transform: "scale(1.02)", // Slight scaling effect on hover
+                  transform: "scale(1.02)",
                 },
               }}
             >
               <Typography
-                component={"h1"}
-                color={"primary.contrastText"}
-                fontWeight={"medium"}
+                component="h1"
+                color="primary.contrastText"
+                fontWeight="medium"
                 pb={1}
-                display={"flex"}
-                alignItems={{ xs: "flex-start", md: "center" }}
-                flexDirection={{ xs: "column", md: "row" }}
-                fontSize={{ xs: 12, md: 24 }}
+                display="flex"
+                alignItems="center"
+                gap={1}
+                fontSize={{ xs: 14, md: 24 }}
               >
-                <span className="me-1">
-                  <FaGraduationCap />
-                </span>
-                <span>Diploma in Computer Technology</span>
+                <FaGraduationCap />
+                Diploma in Computer Technology
               </Typography>
               <Typography
-                component={"p"}
-                fontSize={{ xs: 8, md: 16 }}
-                color={"primary.contrastText"}
-                fontWeight={"medium"}
-                pb={1}
+                component="p"
+                fontSize={{ xs: 12, md: 16 }}
+                color="primary.contrastText"
+                fontWeight="medium"
               >
                 Completed Diploma in Computer Technology from Bangladesh Skill
                 Development Institute in 2023.
               </Typography>
             </Box>
-          </div>
-          <Box className="relative col-span-1 w-full h-full flex justify-center items-center">
-            <div className="h-full w-1 bg-indigo-300"></div>
-            <div className="absolute w-6 h-6 rounded-full bg-indigo-400 z-10 text-white text-center">
-              1
-            </div>
-          </Box>
-          <div className="col-span-4 w-full h-full"></div>
+          </Grid>
 
-          {/* Stack 2 */}
-          <div className="col-span-4 w-full h-full"></div>
-          <div className="relative col-span-1 w-full h-full flex justify-center items-center">
-            <div className="h-full w-1 bg-indigo-300"></div>
-            <div className="absolute w-6 h-6 rounded-full bg-indigo-400 z-10 text-white text-center">
+          {/* Center Line & Dot - Stack 1 */}
+          <Grid
+            item
+            xs={12}
+            md={2}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            position="relative"
+            component={motion.div}
+            variants={inViewItemVariants}
+          >
+            <Box
+              sx={{
+                width: "2px",
+                height: "100%",
+                backgroundColor: "#a5b4fc", // indigo-300
+              }}
+            />
+            <Box
+              sx={{
+                position: "absolute",
+                width: 24,
+                height: 24,
+                borderRadius: "50%",
+                backgroundColor: "#818cf8", // indigo-400
+                color: "white",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 1,
+              }}
+            >
+              1
+            </Box>
+          </Grid>
+
+          {/* Right Spacer */}
+          <Grid
+            item
+            xs={12}
+            md={5}
+            component={motion.div}
+            variants={inViewItemVariants}
+          />
+
+          {/* Spacer */}
+          <Grid
+            item
+            xs={12}
+            md={5}
+            component={motion.div}
+            variants={inViewItemVariants}
+          />
+
+          {/* Center Line & Dot - Stack 2 */}
+          <Grid
+            item
+            xs={12}
+            md={2}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            position="relative"
+            component={motion.div}
+            variants={inViewItemVariants}
+          >
+            <Box
+              sx={{
+                width: "2px",
+                height: "100%",
+                backgroundColor: "#a5b4fc", // indigo-300
+              }}
+            />
+            <Box
+              sx={{
+                position: "absolute",
+                width: 24,
+                height: 24,
+                borderRadius: "50%",
+                backgroundColor: "#818cf8", // indigo-400
+                color: "white",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 1,
+              }}
+            >
               2
-            </div>
-          </div>
-          <div
-            className="col-span-4 w-full h-full"
-            data-aos="fade-left"
-            data-aos-easing="linear"
-            data-aos-duration="1200"
+            </Box>
+          </Grid>
+
+          {/* Stack 2 - Right Box */}
+          <Grid
+            item
+            xs={12}
+            md={5}
+            component={motion.div}
+            variants={inViewItemVariants}
           >
             <Box
               sx={{
                 height: "100%",
-                width: "100%",
                 backgroundColor: "primary.main",
                 py: 2,
                 px: 3,
                 borderRadius: "6px",
-                boxShadow: 2, // Add some shadow for depth
-                transition: "transform 0.3s", // Smooth transition on hover
+                boxShadow: 2,
+                transition: "transform 0.3s",
                 "&:hover": {
-                  transform: "scale(1.02)", // Slight scaling effect on hover
+                  transform: "scale(1.02)",
                 },
               }}
             >
               <Typography
-                component={"h1"}
-                color={"primary.contrastText"}
-                fontWeight={"medium"}
+                component="h1"
+                color="primary.contrastText"
+                fontWeight="medium"
                 pb={1}
-                display={"flex"}
-                alignItems={{ xs: "flex-start", md: "center" }}
-                flexDirection={{ xs: "column", md: "row" }}
-                fontSize={{ xs: 12, md: 24 }}
+                display="flex"
+                alignItems="center"
+                gap={1}
+                fontSize={{ xs: 14, md: 24 }}
               >
-                <span className="me-1">
-                  <FaGraduationCap />
-                </span>
-                <span>Secondary School Certificate(S.S.C)</span>
+                <FaGraduationCap />
+                Secondary School Certificate (S.S.C)
               </Typography>
               <Typography
-                component={"p"}
-                fontSize={{ xs: 8, md: 16 }}
-                color={"primary.contrastText"}
-                fontWeight={"medium"}
-                pb={1}
+                component="p"
+                fontSize={{ xs: 12, md: 16 }}
+                color="primary.contrastText"
+                fontWeight="medium"
               >
-                Completed Secondary School Certificate(S.S.C) from Puran Bazar
+                Completed Secondary School Certificate (S.S.C) from Puran Bazar
                 M.H. High School in 2018.
               </Typography>
             </Box>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

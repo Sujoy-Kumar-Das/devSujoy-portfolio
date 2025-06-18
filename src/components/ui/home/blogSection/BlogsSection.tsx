@@ -1,8 +1,8 @@
 import Heading from "@/components/shared/heading/Heading";
 import blogService from "@/services/actions/blog.service";
-import { Box, Button, Container, Grid } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
 import Link from "next/link";
-import BlogCard from "./BlogCard";
+import BlogList from "./BlogList";
 
 export default async function BlogsSection() {
   const blogs = await blogService(3);
@@ -19,13 +19,8 @@ export default async function BlogsSection() {
         <Heading title="Blogs" subtitle="Explore my coding journal" />
 
         {/* Display all blogs in a grid with improved spacing */}
-        <Grid container spacing={4} mt={2}>
-          {blogs.map((blog: any) => (
-            <Grid item xs={12} md={4} key={blog._id}>
-              <BlogCard blog={blog} bgColor={false} />
-            </Grid>
-          ))}
-        </Grid>
+
+        <BlogList blogs={blogs} />
 
         {blogs.length > 3 && (
           <Box

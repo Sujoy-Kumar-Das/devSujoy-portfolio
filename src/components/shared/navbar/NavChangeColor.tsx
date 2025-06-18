@@ -8,12 +8,15 @@ export default function NavChangeColor({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setActiveNavBg(window.scrollY > 50);
+      // Add a slight delay to the scroll effect to make it smoother
+      requestAnimationFrame(() => {
+        setActiveNavBg(window.scrollY > 50);
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Use passive scroll listener for better performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Clean up the event listener on unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -23,12 +26,19 @@ export default function NavChangeColor({ children }: { children: ReactNode }) {
     <Box
       component={motion.div}
       sx={{
+        // Smooth transition for background and padding
+        transition: "background-color 0.3s ease, padding-bottom 0.3s ease",
         backgroundColor: activeNavBg ? "background.paper" : "transparent",
         py: 4,
+        pb: activeNavBg ? 4 : 2, // Explicitly define both states
+        position: "sticky",
+        top: 0,
+        // Optional: add a subtle shadow when active
+        boxShadow: activeNavBg ? "0 2px 10px rgba(0,0,0,0.1)" : "none",
       }}
       zIndex={100}
       initial={{
-        translateY: "-100vh",
+        translateY: "-500px",
         opacity: 0,
       }}
       animate={{
@@ -36,8 +46,10 @@ export default function NavChangeColor({ children }: { children: ReactNode }) {
         opacity: 1,
       }}
       transition={{
-        duration: 0.5,
+        duration: 0.8, // Increased duration for smoother entry
         type: "spring",
+        damping: 10, // More damping for less bounce
+        stiffness: 100, // Adjusted stiffness
       }}
     >
       {children}

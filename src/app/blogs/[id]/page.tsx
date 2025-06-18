@@ -1,103 +1,61 @@
-import { Box, Stack, Typography } from "@mui/material";
+import myImage from "@/assets/me.jpg";
+import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import Author from "./Components/Author";
+import BlogTagList from "./Components/BlogTagList";
 
-export default async function BlogDetails({
+const author = {
+  name: "Sujoy Kumar Das",
+  createdAt: new Date().toLocaleDateString(),
+  image: myImage,
+};
+
+export default async function BlogDetailsPage({
   params,
 }: {
   params: { id: string };
 }) {
   const { id } = params;
 
-  const res = await fetch(
-    `https://backend-rosy-chi.vercel.app/blogs/${id}?limit=9`,
-    {
-      next: {
-        revalidate: 30,
-      },
-    }
-  );
+  const res = await fetch(`https://backend-rosy-chi.vercel.app/blogs/${id}`, {
+    next: {
+      revalidate: 30,
+    },
+  });
+
   const { data: blog } = await res.json();
-
   return (
-    <Box py={10} bgcolor={"background.default"}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          width: { xs: "90%", md: "50%" },
-          marginX: "auto",
-          backgroundColor: "background.paper",
-          borderRadius: "10px",
-        }}
-      >
-        <Box>
-          <Box
-            sx={{
-              position: "relative",
-              width: "100%",
-              height: "300px",
-              overflow: "hidden",
-              borderTopLeftRadius: "10px",
-              borderTopRightRadius: "10px",
-            }}
-          >
-            <Image
-              src={blog.image}
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              style={{
-                position: "absolute",
-              }}
-            />
-          </Box>
-          <Box px={2} py={3}>
-            <Stack
-              direction={"row"}
-              justifyContent={"space-between"}
-              alignItems={"center"}
-              py={2}
-            >
-              <Typography
-                fontSize={30}
-                fontWeight={"bold"}
-                color={"primary.main"}
-              >
-                <FaRegHeart />
-              </Typography>
-              <Box>
-                <Stack direction={"row"} alignItems={"center"} spacing={1}>
-                  <Typography
-                    fontSize={20}
-                    fontWeight={"bold"}
-                    color={"primary.main"}
-                  >
-                    <FaHeart />
-                  </Typography>
-                  <Typography fontSize={30} color={"primary.main"}>
-                    {blog.likes}
-                  </Typography>
-                </Stack>
-                <Typography fontSize={20} color={"primary.main"}>
-                  {blog.date}
-                </Typography>
-              </Box>
-            </Stack>
+    <Container maxWidth="md" sx={{ py: 6 }}>
+      {/* Article */}
+      <Box bgcolor="#fff" borderRadius={3} boxShadow={3} overflow="hidden">
+        {/* Image */}
+        <Box height={384} position="relative">
+          <Image
+            src={blog.image}
+            alt="Featured"
+            layout="fill"
+            objectFit="contain"
+          />
+        </Box>
 
-            <Box height={2} width={"100%"} bgcolor={"primary.main"}></Box>
+        {/* Content */}
+        <Box p={4}>
+          {/* Tags */}
+          <BlogTagList tags={blog?.tags || ["React", "Next.js"]} />
 
-            <Box>
-              <Typography variant="h5" fontWeight={"bold"} py={2}>
-                {blog.title}
-              </Typography>
-              <Typography fontSize={"body2"} fontWeight={"light"}>
-                {blog.shortDescription}
-              </Typography>
-            </Box>
-          </Box>
+          {/* Title */}
+          <Typography variant="h2" gutterBottom>
+            {blog?.title}
+          </Typography>
+
+          {/* Author */}
+          <Author author={author} />
+
+          {/* Paragraphs */}
+
+          <Box>{blog.description}</Box>
         </Box>
       </Box>
-    </Box>
+    </Container>
   );
 }

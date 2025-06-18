@@ -1,25 +1,54 @@
+"use client";
 import {
   animateDownloadButtonIcon,
   intro,
   introChildren,
 } from "@/animation/framerMotion/home/homeAnimation";
 import DownloadIcon from "@mui/icons-material/Download";
-import { Button, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import * as motion from "motion/react-client";
 import TextWriterAnimation from "./textWriter/TextWriterAnimation";
 
 export default function LeftHeroSection() {
   return (
     <motion.div variants={intro} initial="hidden" animate="visible">
-      <motion.h1 variants={introChildren}>Hello! I&rsquo;m</motion.h1>
-      <motion.p variants={introChildren}>Sujoy Kumar Das</motion.p>
-      <Typography component={motion.p} variants={introChildren}>
-        <Typography component={"span"} variant="h5">
+      <Typography
+        component={motion.h1}
+        variant="h2"
+        color={"text.primary"}
+        variants={introChildren}
+      >
+        Hello! I&rsquo;m
+      </Typography>
+
+      <Typography
+        component={motion.h2}
+        variant="h1"
+        color={"primary.light"}
+        variants={introChildren}
+        my={1}
+      >
+        Sujoy Kumar Das
+      </Typography>
+      <Typography
+        component={motion.p}
+        variant="h3"
+        fontWeight={"medium"}
+        variants={introChildren}
+      >
+        <Typography component={"span"} variant="h3">
           I{"'"}m a{" "}
         </Typography>
+
         <TextWriterAnimation />
       </Typography>
-      <motion.div
+
+      <Stack
+        direction={"row"}
+        alignItems={"center"}
+        gap={2}
+        mt={3}
+        component={motion.div}
         variants={introChildren}
         className=" flex items-center justify-start space-x-5 mt-5"
       >
@@ -42,7 +71,7 @@ export default function LeftHeroSection() {
             <DownloadIcon />
           </motion.span>
         </Button>
-      </motion.div>
+      </Stack>
     </motion.div>
   );
 }

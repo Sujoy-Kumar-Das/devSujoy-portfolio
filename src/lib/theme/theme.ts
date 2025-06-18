@@ -2,33 +2,81 @@ import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
   palette: {
-    mode: "dark",
+    mode: "light",
     primary: {
       main: "#1586FD",
       light: "#4aa3ff",
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#9CA3AF",
+      main: "#6b7280", // neutral gray
     },
     background: {
-      default: "#0f172a",
-      paper: "#1e293b",
+      default: "#ECF0F1", // soft light background
+      paper: "#f8fafc", // card/paper background
     },
     text: {
-      primary: "#e2e8f0",
-      secondary: "#94a3b8",
+      primary: "#0f172a", // dark slate
+      secondary: "#475569", // muted grayish-blue
     },
-    divider: "#334155",
+    divider: "#e2e8f0",
   },
 
   typography: {
     fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
-    body1: { color: "#e2e8f0" },
-    body2: { color: "#94a3b8" },
-    h1: { color: "#ffffff", fontWeight: 700 },
-    h2: { color: "#f1f5f9", fontWeight: 600 },
-    h3: { color: "#f1f5f9" },
+
+    h1: {
+      color: "#0f172a",
+      fontWeight: 700,
+      fontSize: "3rem",
+      lineHeight: 1.2,
+      "@media (max-width:900px)": {
+        fontSize: "2.7rem",
+      },
+      "@media (max-width:600px)": {
+        fontSize: "2rem",
+      },
+    },
+    h2: {
+      color: "#1e293b",
+      fontWeight: 600,
+      fontSize: "2.5rem",
+      lineHeight: 1.3,
+      "@media (max-width:900px)": {
+        fontSize: "2rem",
+      },
+      "@media (max-width:600px)": {
+        fontSize: "1.6rem",
+      },
+    },
+    h3: {
+      color: "#1e293b",
+      fontWeight: 500,
+      fontSize: "2rem",
+      lineHeight: 1.4,
+      "@media (max-width:900px)": {
+        fontSize: "1.6rem",
+      },
+      "@media (max-width:600px)": {
+        fontSize: "1.3rem",
+      },
+    },
+    body1: {
+      color: "#334155",
+      fontSize: "1rem",
+      lineHeight: 1.6,
+      "@media (max-width:600px)": {
+        fontSize: "0.95rem",
+      },
+    },
+    body2: {
+      color: "#64748b",
+      fontSize: "0.875rem",
+      lineHeight: 1.6,
+      "@media (max-width:600px)": {
+        fontSize: "0.8rem",
+      },
+    },
   },
 
   components: {
@@ -41,15 +89,44 @@ export const theme = createTheme({
           padding: "10px 24px",
           borderRadius: "12px",
           textTransform: "none",
+          fontWeight: 500,
+          transition: "all 0.4s ease",
           boxShadow: "none",
-          transition: "all 0.5s ease",
+          fontSize: "1rem",
+          "&:disabled": {
+            opacity: 0.6,
+            cursor: "not-allowed",
+          },
+        },
+        contained: {
+          backgroundColor: "#1586FD",
+          color: "#ffffff",
           "&:hover": {
-            boxShadow: "0px 0px 12px #1586FD33",
             backgroundColor: "#1d4ed8",
+            boxShadow: "0px 0px 12px #1586FD33",
+          },
+        },
+        outlined: {
+          border: "1px solid #1586FD",
+          color: "#1586FD",
+          backgroundColor: "transparent",
+          "&:hover": {
+            backgroundColor: "rgba(21, 134, 253, 0.05)",
+            borderColor: "#1d4ed8",
+            boxShadow: "0px 0px 12px #1586FD22",
+          },
+        },
+        text: {
+          color: "#1586FD",
+          backgroundColor: "transparent",
+          "&:hover": {
+            backgroundColor: "rgba(21, 134, 253, 0.05)",
+            textDecoration: "underline",
           },
         },
       },
     },
+
     MuiContainer: {
       defaultProps: {
         maxWidth: "lg",
@@ -58,9 +135,9 @@ export const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          backgroundColor: "#1e293b",
+          backgroundColor: "#ffffff",
           borderRadius: "16px",
-          boxShadow: "0px 8px 24px rgba(0,0,0,0.2)",
+          boxShadow: "0px 8px 24px rgba(0,0,0,0.05)",
         },
       },
     },

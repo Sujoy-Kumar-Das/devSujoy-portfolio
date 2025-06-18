@@ -1,4 +1,6 @@
+"use client";
 import { Box, Typography } from "@mui/material";
+import { motion, Variants } from "framer-motion";
 
 export default function Heading({
   title,
@@ -7,9 +9,36 @@ export default function Heading({
   title: string;
   subtitle: string;
 }) {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const textVariants: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+      },
+    },
+  };
+
   return (
     <Box
-      component={"div"}
+      component={motion.div}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.5 }}
       mb={5}
       sx={{
         textAlign: "center",
@@ -17,37 +46,22 @@ export default function Heading({
       }}
     >
       <Typography
-        component={"h1"}
+        component={motion.h1}
+        variants={textVariants}
         variant="h2"
-        fontWeight={"bold"}
-        textTransform={"capitalize"}
+        textTransform="capitalize"
         color="text.primary"
         mb={1}
-        data-aos="fade-up"
-        data-aos-easing="linear"
-        data-aos-duration="1000"
-        sx={{
-          display: "inline-block",
-          borderRadius: "5px",
-          padding: "5px 10px",
-        }}
       >
         {title}
       </Typography>
+
       <Typography
-        component={"h5"}
-        variant="h5"
-        fontWeight={"medium"}
-        textTransform={"capitalize"}
+        component={motion.h3}
+        variants={textVariants}
+        variant="h3"
+        textTransform="capitalize"
         color="text.secondary"
-        data-aos="fade-up"
-        data-aos-easing="linear"
-        data-aos-duration="1000"
-        sx={{
-          lineHeight: 1.6,
-          marginTop: "0.5rem",
-          padding: "0 15px",
-        }}
       >
         {subtitle}
       </Typography>

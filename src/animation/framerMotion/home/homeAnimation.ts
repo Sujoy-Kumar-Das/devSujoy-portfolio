@@ -30,7 +30,7 @@ export const animateDownloadButtonIcon = {
     y: 0,
   },
   visible: {
-    y: 30,
+    y: 40,
     transition: {
       duration: 3,
       repeat: Infinity,

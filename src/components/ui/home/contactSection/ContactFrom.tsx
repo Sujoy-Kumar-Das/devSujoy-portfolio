@@ -1,7 +1,9 @@
 "use client";
 
+import { inViewItemVariants } from "@/animation/framerMotion/inview-animation";
 import { From, FromTextArea, InputField } from "@/components/shared/from";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { motion } from "framer-motion";
 import { FieldValues } from "react-hook-form";
 import { z } from "zod";
 
@@ -17,11 +19,30 @@ export default function ContactFrom() {
 
   return (
     <From handler={handleContactFrom} schema={contactSchema}>
-      <InputField label="Name" type="text" name="name" />
-      <InputField label="Email" type="email" name="email" />
-      <InputField label="Subject" type="text" name="subject" />
-      <FromTextArea label="Message" name="message" type="text" />
-      <Button color="primary" fullWidth type="submit" sx={{ mt: 3 }}>
+      <Box component={motion.div} variants={inViewItemVariants}>
+        <InputField label="Name" type="text" name="name" />
+      </Box>
+
+      <Box component={motion.div} variants={inViewItemVariants}>
+        <InputField label="Email" type="email" name="email" />
+      </Box>
+
+      <Box component={motion.div} variants={inViewItemVariants}>
+        <InputField label="Subject" type="text" name="subject" />
+      </Box>
+
+      <Box component={motion.div} variants={inViewItemVariants}>
+        <FromTextArea label="Message" name="message" type="text" />
+      </Box>
+
+      <Button
+        color="primary"
+        fullWidth
+        type="submit"
+        sx={{ mt: 3 }}
+        component={motion.button}
+        variants={inViewItemVariants}
+      >
         Send
       </Button>
     </From>

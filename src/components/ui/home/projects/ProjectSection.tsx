@@ -1,9 +1,7 @@
 import Heading from "@/components/shared/heading/Heading";
 import projectService from "@/services/actions/projects.service";
-import { TProject } from "@/types/Tproject";
-import { Box, Button, Container, Grid } from "@mui/material";
-import Link from "next/link";
-import ProjectCard from "./ProjectCard";
+import { Container } from "@mui/material";
+import ProjectList from "./ProjectList";
 
 export default async function ProjectSection() {
   const projects = await projectService(6);
@@ -25,31 +23,7 @@ export default async function ProjectSection() {
       />
 
       {/* Projects Grid */}
-      <Grid container spacing={4} justifyContent="center">
-        {projects.map((project: TProject) => (
-          <Grid key={project._id} item xs={12} sm={6} md={4}>
-            <ProjectCard project={project} />
-          </Grid>
-        ))}
-      </Grid>
-
-      {/* Show All Projects Button */}
-      {projects.length > 6 && (
-        <Box mt={6} display="flex" justifyContent="center">
-          <Button
-            component={Link}
-            href="/projects"
-            variant="outlined"
-            size="large"
-            sx={{
-              borderRadius: "30px",
-              padding: "10px 20px",
-            }}
-          >
-            Show All Projects
-          </Button>
-        </Box>
-      )}
+      <ProjectList projects={projects} />
     </Container>
   );
 }

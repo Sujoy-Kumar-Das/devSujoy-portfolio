@@ -9,13 +9,13 @@ import SkillSection from "@/components/ui/home/skills/SkillSection";
 export default function HomePage() {
   return (
     <>
-      {/* <HeroSection /> */}
-      {/* <AboutSection />
-      <Education />
+      <HeroSection />
+      <AboutSection />
       <SkillSection />
       <ProjectSection />
+      <Education />
       <BlogsSection />
-      <ContactSection /> */}
+      <ContactSection />
     </>
   );
 }
