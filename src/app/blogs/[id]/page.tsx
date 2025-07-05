@@ -34,7 +34,7 @@ export default async function BlogDetailsPage({
             src={blog.image}
             alt="Featured"
             layout="fill"
-            objectFit="contain"
+            objectFit="fill"
           />
         </Box>
 

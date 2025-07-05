@@ -73,9 +73,12 @@ const PersonalInfoCard = () => {
 
       <Stack direction={"row"} spacing={1} mt={2} alignItems={"center"}>
         {socialLinks.map((socialLink) => (
-          <Box component={motion.div} variants={inViewItemVariants}>
+          <Box
+            key={socialLink.id}
+            component={motion.div}
+            variants={inViewItemVariants}
+          >
             <SocialIconButton
-              key={socialLink.id}
               icon={socialLink.icon}
               link={socialLink.link}
               title={socialLink.title}

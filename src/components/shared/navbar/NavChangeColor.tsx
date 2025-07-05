@@ -1,10 +1,13 @@
 "use client";
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
 
 export default function NavChangeColor({ children }: { children: ReactNode }) {
   const [activeNavBg, setActiveNavBg] = useState(false);
+
+  const pathName = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,8 +41,8 @@ export default function NavChangeColor({ children }: { children: ReactNode }) {
       }}
       zIndex={100}
       initial={{
-        translateY: "-500px",
-        opacity: 0,
+        translateY: pathName === "/" ? "-500px" : "0px",
+        opacity: pathName === "/" ? 0 : 1,
       }}
       animate={{
         translateY: 0,

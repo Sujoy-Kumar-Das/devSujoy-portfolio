@@ -1,9 +1,20 @@
 import { IconButton } from "@mui/material";
+import { ReactNode } from "react";
 
-export default function SocialIconButton({ link, title, icon }) {
+interface SocialIconButtonProps {
+  link: string;
+  title: string;
+  icon: ReactNode;
+}
+
+export default function SocialIconButton({
+  link,
+  title,
+  icon,
+}: SocialIconButtonProps) {
   return (
     <IconButton
-      component={"a"}
+      component="a"
       href={link}
       target="_blank"
       rel="noopener noreferrer"

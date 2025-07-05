@@ -9,6 +9,8 @@ import { Button, Stack, Typography } from "@mui/material";
 import * as motion from "motion/react-client";
 import TextWriterAnimation from "./textWriter/TextWriterAnimation";
 
+const resumeLink = `https://drive.google.com/file/d/1Cm8yOae4ru4XXhkRwblg90Z7PVRiQxKq/view`;
+
 export default function LeftHeroSection() {
   return (
     <motion.div variants={intro} initial="hidden" animate="visible">
@@ -58,7 +60,7 @@ export default function LeftHeroSection() {
         <Button
           component="a"
           target="_blank"
-          href="https://drive.google.com/file/d/16lBfJX3BxGFqolmV3F_yfbZaQLi9o5ED/view?usp=sharing"
+          href={resumeLink}
           variant="outlined"
           sx={{ overflow: "hidden" }}
         >

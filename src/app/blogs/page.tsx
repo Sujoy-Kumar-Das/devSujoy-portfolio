@@ -17,7 +17,7 @@ export default async function BlogPage() {
 
         <Grid container spacing={3}>
           {blogs.map((blog: any) => (
-            <BlogCard blog={blog} key={blog._id} bgColor={true} />
+            <BlogCard blog={blog} key={blog._id} />
           ))}
         </Grid>
 

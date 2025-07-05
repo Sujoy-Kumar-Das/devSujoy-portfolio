@@ -19,7 +19,13 @@ export default function Footer() {
             mb: 3,
           }}
         >
-          <Stack direction={"row"} spacing={2}>
+          <Stack
+            direction={"row"}
+            flexWrap={"wrap"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            spacing={2}
+          >
             {navItems.map((navItem, index) => (
               <Stack
                 key={navItem.id}

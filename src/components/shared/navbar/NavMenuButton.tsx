@@ -1,16 +1,17 @@
 "use client";
 import { motion } from "framer-motion";
-
 import {
   navBgAnimationMobile,
   navItemChildVariants,
   navItemVariants,
 } from "@/animation/framerMotion/navbar/MobileMenuAnimation";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
 import { navItems } from "./navItems";
+
 export default function NavMenuButton() {
   const [open, setOpen] = useState(false);
 
@@ -18,15 +19,24 @@ export default function NavMenuButton() {
     <>
       <Button
         onClick={() => setOpen((prev) => !prev)}
-        sx={{ display: { xs: "block", md: "none" } }}
+        sx={{
+          display: { xs: "flex", md: "none" },
+          minWidth: "auto",
+          padding: "8px",
+          color: "text.primary",
+          "&:hover": {
+            backgroundColor: "action.hover",
+          },
+        }}
+        aria-label="Toggle menu"
       >
-        <MenuIcon />
+        <MenuIcon fontSize="medium" />
       </Button>
 
       <Box
         component={motion.div}
         variants={navBgAnimationMobile}
-        initial="open"
+        initial="closed"
         animate={open ? "open" : "closed"}
         sx={{
           width: "100vw",
@@ -35,31 +45,57 @@ export default function NavMenuButton() {
           backgroundColor: "primary.light",
           display: { xs: "block", md: "none" },
           top: 0,
-          right: 0,
+          left: 0,
+          zIndex: 1300, // Higher than app bar
+          overflow: "hidden",
         }}
-        className={`duration-500 transition-all ease-out`}
       >
-        <Stack direction={"row"} justifyContent={"flex-end"} mt={3} mr={3}>
+        <Stack
+          direction="row"
+          justifyContent="flex-end"
+          sx={{
+            padding: 2,
+            position: "absolute",
+            top: 0,
+            right: 0,
+            zIndex: 1,
+          }}
+        >
           <Button
-            onClick={() => setOpen((prev: boolean) => !prev)}
+            onClick={() => setOpen(false)}
             sx={{
-              width: "60px",
-              height: "60px",
+              minWidth: "auto",
+              width: 48,
+              height: 48,
               borderRadius: "50%",
+              color: "text.primary",
+              backgroundColor: "rgba(255, 255, 255, 0.2)",
+              "&:hover": {
+                backgroundColor: "rgba(255, 255, 255, 0.3)",
+              },
+            }}
+            aria-label="Close menu"
+          >
+            <CloseIcon fontSize="medium" />
+          </Button>
+        </Stack>
+
+        <Stack
+          sx={{
+            height: "100%",
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Stack
+            component={motion.div}
+            variants={navItemVariants}
+            sx={{
+              gap: 1,
               textAlign: "center",
             }}
           >
-            X
-          </Button>
-        </Stack>
-        <Stack
-          component={"div"}
-          direction={"row"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          height={"100%"}
-        >
-          <Stack component={motion.div} variants={navItemVariants}>
             {navItems.map((navItem) => (
               <Box
                 component={motion.div}
@@ -67,16 +103,22 @@ export default function NavMenuButton() {
                 variants={navItemChildVariants}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                sx={{
-                  textAlign: "center",
-                }}
               >
                 <Typography
-                  onClick={() => setOpen((prev: boolean) => !prev)}
+                  onClick={() => setOpen(false)}
                   component={Link}
                   href={navItem.link}
-                  color={"body1"}
-                  fontWeight={"medium"}
+                  sx={{
+                    color: "text.primary",
+                    fontWeight: 500,
+                    fontSize: "1.5rem",
+                    textDecoration: "none",
+                    "&:hover": {
+                      color: "primary.main",
+                    },
+                    padding: 1,
+                    display: "block",
+                  }}
                 >
                   {navItem.title}
                 </Typography>
